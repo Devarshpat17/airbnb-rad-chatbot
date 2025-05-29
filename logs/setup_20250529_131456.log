@@ -1,0 +1,49 @@
+2025-05-29 13:14:56,680 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_131456.log
+2025-05-29 13:14:56,680 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:14:56,680 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=True, skip_export=True
+2025-05-29 13:14:56,680 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 13:14:56,680 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 13:14:56,680 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 13:14:56,681 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:14:56,681 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:14:56,697 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:14:56,697 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 13:14:56,720 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:14:56,721 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:14:56,721 - __main__ - ERROR - MongoDB connection failed: 'MongoDBConnector' object has no attribute 'get_collection'
+2025-05-29 13:14:56,722 - __main__ - ERROR - Please check your MongoDB configuration in config.py
+2025-05-29 13:14:56,723 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 13:14:56,723 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 13:14:56,723 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 13:14:56,723 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:14:57,945 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:14:57,946 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:14:57,946 - index_manager - ERROR - Error loading documents from MongoDB: 'MongoDBConnector' object has no attribute 'get_collection'
+2025-05-29 13:14:57,946 - __main__ - ERROR - Failed to build search index: 'MongoDBConnector' object has no attribute 'get_collection'
+2025-05-29 13:14:57,947 - __main__ - INFO - 
+============================================================
+2025-05-29 13:14:57,947 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:14:57,947 - __main__ - INFO - ============================================================
+2025-05-29 13:14:57,947 - __main__ - INFO - Configuration:
+2025-05-29 13:14:57,947 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:14:57,947 - __main__ - INFO -   Database: local
+2025-05-29 13:14:57,947 - __main__ - INFO -   Collection: documents
+2025-05-29 13:14:57,947 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 13:14:57,947 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:14:57,947 - __main__ - INFO - 
+Files Created:
+2025-05-29 13:14:57,950 - __main__ - INFO - 
+Next Steps:
+2025-05-29 13:14:57,950 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:14:57,950 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:14:57,950 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 13:14:57,950 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:14:57,950 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 13:14:57,950 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:14:57,950 - __main__ - INFO - 
+============================================================
+2025-05-29 13:14:57,950 - __main__ - ERROR - 
+Setup completed with 2 failed step(s): Testing MongoDB connection, Building search index

@@ -1,0 +1,96 @@
+2025-05-29 13:08:02,273 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_130802.log
+2025-05-29 13:08:02,273 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:08:02,273 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=False, skip_export=False
+2025-05-29 13:08:02,273 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 13:08:02,273 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 13:08:02,274 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 13:08:02,274 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:08:02,274 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:08:02,277 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:08:02,277 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 13:08:02,308 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:08:02,309 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:08:02,310 - __main__ - ERROR - MongoDB connection failed: 'MongoDBConnector' object is not subscriptable
+2025-05-29 13:08:02,310 - __main__ - ERROR - Please check your MongoDB configuration in config.py
+2025-05-29 13:08:02,310 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 13:08:02,310 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 13:08:02,311 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 13:08:02,311 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:08:02,341 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:08:02,341 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:08:02,341 - index_manager - ERROR - Error loading documents from MongoDB: 'Config' object has no attribute 'collection_name'
+2025-05-29 13:08:02,342 - __main__ - ERROR - Failed to build search index: 'Config' object has no attribute 'collection_name'
+2025-05-29 13:08:02,342 - __main__ - INFO - 
+Executing step: Testing RAG system
+2025-05-29 13:08:02,342 - __main__ - INFO - Testing RAG system...
+2025-05-29 13:08:02,344 - core_system - INFO - Initializing JSON RAG System...
+2025-05-29 13:08:02,344 - core_system - INFO - Loading embedding model...
+2025-05-29 13:08:02,345 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 13:08:02,346 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:08:05,217 - core_system - INFO - Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:08:05,217 - core_system - INFO - Loading document index...
+2025-05-29 13:08:05,217 - core_system - INFO - Creating new document index...
+2025-05-29 13:08:05,224 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:08:05,236 - database - INFO - Total indexes after optimization: 13
+2025-05-29 13:08:05,990 - core_system - INFO - Fetched 5555 documents from MongoDB
+2025-05-29 13:08:05,991 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:08:22,005 - core_system - INFO - Created and cached index with 5555 documents
+2025-05-29 13:08:22,006 - core_system - INFO - Loading FAISS index...
+2025-05-29 13:08:22,006 - core_system - INFO - Creating new FAISS index...
+2025-05-29 13:08:22,008 - core_system - INFO - Creating embeddings for 5555 documents
+2025-05-29 13:13:00,925 - core_system - ERROR - Failed to create FAISS index: [Errno 22] Invalid argument
+2025-05-29 13:13:00,927 - __main__ - INFO - RAG system initialized successfully
+2025-05-29 13:13:00,928 - __main__ - INFO - Testing query: 'Find apartments with wifi'
+2025-05-29 13:13:00,928 - core_system - ERROR - Query processing failed: System not initialized
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 877, in process_query
+    raise ValueError("System not initialized")
+ValueError: System not initialized
+2025-05-29 13:13:00,929 - __main__ - INFO - Testing query: 'Show me properties under $100'
+2025-05-29 13:13:00,929 - core_system - ERROR - Query processing failed: System not initialized
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 877, in process_query
+    raise ValueError("System not initialized")
+ValueError: System not initialized
+2025-05-29 13:13:00,930 - __main__ - INFO - Testing query: 'What are some good places to stay?'
+2025-05-29 13:13:00,930 - core_system - ERROR - Query processing failed: System not initialized
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 877, in process_query
+    raise ValueError("System not initialized")
+ValueError: System not initialized
+2025-05-29 13:13:00,930 - __main__ - INFO - RAG system testing completed
+2025-05-29 13:13:01,164 - __main__ - INFO - 
+Executing step: Creating sample exports
+2025-05-29 13:13:01,165 - __main__ - INFO - Creating sample Excel exports...
+2025-05-29 13:13:01,165 - __main__ - INFO - Exporting database sample to Excel...
+2025-05-29 13:13:01,196 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:13:01,196 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:13:01,196 - excel_export - ERROR - Error exporting database to Excel: 'MongoDBConnector' object is not subscriptable
+2025-05-29 13:13:01,197 - __main__ - ERROR - Failed to create sample exports: 'MongoDBConnector' object is not subscriptable
+2025-05-29 13:13:01,197 - __main__ - INFO - 
+============================================================
+2025-05-29 13:13:01,197 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:13:01,197 - __main__ - INFO - ============================================================
+2025-05-29 13:13:01,197 - __main__ - INFO - Configuration:
+2025-05-29 13:13:01,197 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:13:01,197 - __main__ - INFO -   Database: local
+2025-05-29 13:13:01,197 - __main__ - INFO -   Collection: documents
+2025-05-29 13:13:01,197 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 13:13:01,197 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:13:01,197 - __main__ - INFO - 
+Files Created:
+2025-05-29 13:13:01,198 - __main__ - INFO - 
+Next Steps:
+2025-05-29 13:13:01,198 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:13:01,198 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:13:01,198 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 13:13:01,198 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:13:01,198 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 13:13:01,198 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:13:01,198 - __main__ - INFO - 
+============================================================
+2025-05-29 13:13:01,198 - __main__ - ERROR - 
+Setup completed with 3 failed step(s): Testing MongoDB connection, Building search index, Creating sample exports

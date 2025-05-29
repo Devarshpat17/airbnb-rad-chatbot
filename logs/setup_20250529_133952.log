@@ -1,0 +1,57 @@
+2025-05-29 13:39:52,992 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_133952.log
+2025-05-29 13:39:52,992 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:39:52,992 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=True, skip_export=True
+2025-05-29 13:39:52,992 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 13:39:52,992 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 13:39:52,993 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 13:39:52,993 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:39:52,993 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:39:52,993 - __main__ - INFO - [OK] Creating directories completed successfully
+2025-05-29 13:39:52,993 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:39:52,993 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 13:39:53,017 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:39:53,023 - __main__ - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 13:39:53,024 - __main__ - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 13:39:53,024 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:39:53,024 - __main__ - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 13:39:53,024 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 13:39:53,024 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 13:39:53,025 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 13:39:53,025 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:39:53,328 - index_manager - INFO - Loaded existing indexes successfully
+2025-05-29 13:39:53,328 - index_manager - INFO - Using existing indexes
+2025-05-29 13:39:53,328 - __main__ - INFO - Successfully built index with 5555 documents
+2025-05-29 13:39:53,328 - __main__ - INFO - Embedding dimension: 384
+2025-05-29 13:39:53,328 - __main__ - INFO - FAISS index size: 5555
+2025-05-29 13:39:53,405 - __main__ - INFO - [OK] Building search index completed successfully
+2025-05-29 13:39:53,406 - __main__ - INFO - 
+============================================================
+2025-05-29 13:39:53,406 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:39:53,406 - __main__ - INFO - ============================================================
+2025-05-29 13:39:53,406 - __main__ - INFO - Configuration:
+2025-05-29 13:39:53,406 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:39:53,406 - __main__ - INFO -   Database: local
+2025-05-29 13:39:53,406 - __main__ - INFO -   Collection: documents
+2025-05-29 13:39:53,406 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 13:39:53,406 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:39:53,406 - __main__ - INFO - 
+Files Created:
+2025-05-29 13:39:53,406 - __main__ - INFO -   [OK] ./data\faiss_index.bin (8.1 MB)
+2025-05-29 13:39:53,406 - __main__ - INFO -   [OK] ./data\processed_documents.pkl (100.3 MB)
+2025-05-29 13:39:53,406 - __main__ - INFO -   [OK] ./data\embeddings.pkl (8.1 MB)
+2025-05-29 13:39:53,406 - __main__ - INFO -   [OK] ./data\sample_airbnb_export.xlsx (22.7 MB)
+2025-05-29 13:39:53,406 - __main__ - INFO - 
+Next Steps:
+2025-05-29 13:39:53,406 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:39:53,406 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:39:53,406 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 13:39:53,406 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:39:53,406 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 13:39:53,407 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:39:53,407 - __main__ - INFO - 
+============================================================
+2025-05-29 13:39:53,407 - __main__ - INFO - 
+Setup completed successfully!

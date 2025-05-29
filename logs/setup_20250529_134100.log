@@ -1,0 +1,118 @@
+2025-05-29 13:41:00,144 - setup_airbnb_index - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_134100.log
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - Arguments: force_rebuild=False, skip_test=False, skip_export=False
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - 
+Executing step: Creating directories
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - Created/verified directory: ./data
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - Created/verified directory: ./logs
+2025-05-29 13:41:00,145 - setup_airbnb_index - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:41:00,160 - setup_airbnb_index - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:41:00,160 - setup_airbnb_index - INFO - [OK] Creating directories completed successfully
+2025-05-29 13:41:00,160 - setup_airbnb_index - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:41:00,160 - setup_airbnb_index - INFO - Testing MongoDB connection...
+2025-05-29 13:41:00,167 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:41:00,172 - setup_airbnb_index - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 13:41:00,173 - setup_airbnb_index - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 13:41:00,174 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:41:00,174 - setup_airbnb_index - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 13:41:00,174 - setup_airbnb_index - INFO - 
+Executing step: Building search index
+2025-05-29 13:41:00,175 - setup_airbnb_index - INFO - Initializing Index Manager...
+2025-05-29 13:41:00,175 - setup_airbnb_index - INFO - Building search index (this may take a while)...
+2025-05-29 13:41:00,175 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:41:00,480 - index_manager - INFO - Loaded existing indexes successfully
+2025-05-29 13:41:00,480 - index_manager - INFO - Using existing indexes
+2025-05-29 13:41:00,480 - setup_airbnb_index - INFO - Successfully built index with 5555 documents
+2025-05-29 13:41:00,481 - setup_airbnb_index - INFO - Embedding dimension: 384
+2025-05-29 13:41:00,481 - setup_airbnb_index - INFO - FAISS index size: 5555
+2025-05-29 13:41:00,539 - setup_airbnb_index - INFO - [OK] Building search index completed successfully
+2025-05-29 13:41:00,540 - setup_airbnb_index - INFO - 
+Executing step: Testing RAG system
+2025-05-29 13:41:00,540 - setup_airbnb_index - INFO - Testing RAG system...
+2025-05-29 13:41:00,543 - core_system - INFO - Initializing JSON RAG System...
+2025-05-29 13:41:00,543 - core_system - INFO - Loading embedding model...
+2025-05-29 13:41:00,544 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 13:41:00,544 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:41:03,390 - core_system - INFO - Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:41:03,390 - core_system - INFO - Loading document index...
+2025-05-29 13:41:04,236 - core_system - INFO - Loaded 5555 processed documents from cache
+2025-05-29 13:41:04,236 - core_system - INFO - Loading FAISS index...
+2025-05-29 13:41:04,240 - core_system - INFO - Loaded FAISS index with 5555 vectors
+2025-05-29 13:41:04,240 - core_system - INFO - Loading keyword vocabulary...
+2025-05-29 13:41:04,241 - utils - INFO - No saved vocabulary found, attempting to build from database...
+2025-05-29 13:41:04,241 - utils - INFO - Building keyword vocabulary from database...
+2025-05-29 13:41:04,248 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:41:04,994 - utils - INFO - Sampled 1000 documents from large dataset for vocabulary building
+2025-05-29 13:41:17,392 - utils - INFO - Computing TF-IDF scores...
+2025-05-29 13:42:18,220 - utils - INFO - Built vocabulary with 5622 terms
+2025-05-29 13:42:18,221 - utils - INFO - Field statistics: {'name': 1000, 'summary': 961, 'description': 985, 'space': 698, 'neighborhood_overview': 596, 'notes': 415, 'transit': 597, 'access': 554, 'house_rules': 584, 'interaction': 553}
+2025-05-29 13:42:18,254 - utils - INFO - Saved vocabulary to data\keyword_vocabulary.pkl
+2025-05-29 13:42:18,255 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:42:18,267 - utils - INFO - Successfully built and saved vocabulary from database
+2025-05-29 13:42:18,267 - core_system - INFO - System initialized successfully in 77.72s with 5555 documents
+2025-05-29 13:42:18,267 - setup_airbnb_index - INFO - RAG system initialized successfully
+2025-05-29 13:42:18,267 - setup_airbnb_index - INFO - Testing query: 'Find apartments with wifi'
+2025-05-29 13:42:18,267 - core_system - ERROR - Query processing failed: name 'uuid' is not defined
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 880, in process_query
+    session = self.session_manager.get_session(session_id or str(uuid.uuid4()))
+                                                                 ^^^^
+NameError: name 'uuid' is not defined. Did you forget to import 'uuid'?
+2025-05-29 13:42:18,268 - setup_airbnb_index - ERROR - [FAIL] Query failed: name 'uuid' is not defined
+2025-05-29 13:42:18,268 - setup_airbnb_index - INFO - Testing query: 'Show me properties under $100'
+2025-05-29 13:42:18,268 - core_system - ERROR - Query processing failed: name 'uuid' is not defined
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 880, in process_query
+    session = self.session_manager.get_session(session_id or str(uuid.uuid4()))
+                                                                 ^^^^
+NameError: name 'uuid' is not defined. Did you forget to import 'uuid'?
+2025-05-29 13:42:18,268 - setup_airbnb_index - ERROR - [FAIL] Query failed: name 'uuid' is not defined
+2025-05-29 13:42:18,268 - setup_airbnb_index - INFO - Testing query: 'What are some good places to stay?'
+2025-05-29 13:42:18,268 - core_system - ERROR - Query processing failed: name 'uuid' is not defined
+Traceback (most recent call last):
+  File "D:\Digiwagon\json_rag_system\core_system.py", line 880, in process_query
+    session = self.session_manager.get_session(session_id or str(uuid.uuid4()))
+                                                                 ^^^^
+NameError: name 'uuid' is not defined. Did you forget to import 'uuid'?
+2025-05-29 13:42:18,269 - setup_airbnb_index - ERROR - [FAIL] Query failed: name 'uuid' is not defined
+2025-05-29 13:42:18,269 - setup_airbnb_index - INFO - RAG system testing completed
+2025-05-29 13:42:18,361 - setup_airbnb_index - INFO - [OK] Testing RAG system completed successfully
+2025-05-29 13:42:18,361 - setup_airbnb_index - INFO - 
+Executing step: Creating sample exports
+2025-05-29 13:42:18,362 - setup_airbnb_index - INFO - Creating sample Excel exports...
+2025-05-29 13:42:18,362 - setup_airbnb_index - INFO - Exporting database sample to Excel...
+2025-05-29 13:42:18,368 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:42:18,369 - excel_export - INFO - Loading all documents from database...
+2025-05-29 13:42:27,849 - excel_export - INFO - Exported 5555 documents to ./data\sample_airbnb_export.xlsx
+2025-05-29 13:42:27,850 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - [OK] Sample export created: ./data\sample_airbnb_export.xlsx
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - [OK] Creating sample exports completed successfully
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - 
+============================================================
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - ============================================================
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - Configuration:
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   Database: local
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   Collection: documents
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   Data Directory: ./data
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - 
+Files Created:
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   [OK] ./data\faiss_index.bin (8.1 MB)
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   [OK] ./data\processed_documents.pkl (100.3 MB)
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   [OK] ./data\embeddings.pkl (8.1 MB)
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   [OK] ./data\sample_airbnb_export.xlsx (22.7 MB)
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO - 
+Next Steps:
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:42:27,916 - setup_airbnb_index - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO -   3. Try some sample queries like:
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO -      - 'Show me places under $100'
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO - 
+============================================================
+2025-05-29 13:42:27,917 - setup_airbnb_index - INFO - 
+Setup completed successfully!

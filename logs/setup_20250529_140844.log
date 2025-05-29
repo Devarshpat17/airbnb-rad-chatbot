@@ -1,0 +1,97 @@
+2025-05-29 14:08:44,770 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_140844.log
+2025-05-29 14:08:44,770 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 14:08:44,770 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=False, skip_export=False
+2025-05-29 14:08:44,771 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 14:08:44,771 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 14:08:44,771 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 14:08:44,772 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 14:08:44,772 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 14:08:44,787 - __main__ - INFO - [OK] Creating directories completed successfully
+2025-05-29 14:08:44,787 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 14:08:44,788 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 14:08:44,796 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 14:08:44,802 - __main__ - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 14:08:44,803 - __main__ - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 14:08:44,804 - database - INFO - Disconnected from MongoDB
+2025-05-29 14:08:44,804 - __main__ - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 14:08:44,804 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 14:08:44,804 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 14:08:44,805 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 14:08:44,805 - index_manager - INFO - Starting index creation process...
+2025-05-29 14:08:45,133 - index_manager - INFO - Loaded existing indexes successfully
+2025-05-29 14:08:45,133 - index_manager - INFO - Using existing indexes
+2025-05-29 14:08:45,133 - __main__ - INFO - Successfully built index with 5555 documents
+2025-05-29 14:08:45,134 - __main__ - INFO - Embedding dimension: 384
+2025-05-29 14:08:45,134 - __main__ - INFO - FAISS index size: 5555
+2025-05-29 14:08:45,195 - __main__ - INFO - [OK] Building search index completed successfully
+2025-05-29 14:08:45,196 - __main__ - INFO - 
+Executing step: Testing RAG system
+2025-05-29 14:08:45,196 - __main__ - INFO - Testing RAG system...
+2025-05-29 14:08:45,198 - core_system - INFO - Initializing JSON RAG System...
+2025-05-29 14:08:45,199 - core_system - INFO - Loading embedding model...
+2025-05-29 14:08:45,200 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 14:08:45,201 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 14:08:48,913 - core_system - INFO - Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 14:08:48,914 - core_system - INFO - Loading document index...
+2025-05-29 14:08:49,820 - core_system - INFO - Loaded 5555 processed documents from cache
+2025-05-29 14:08:49,820 - core_system - INFO - Loading FAISS index...
+2025-05-29 14:08:49,824 - core_system - INFO - Loaded FAISS index with 5555 vectors
+2025-05-29 14:08:49,824 - core_system - INFO - Loading keyword vocabulary...
+2025-05-29 14:08:49,841 - utils - INFO - Loaded vocabulary with 5622 terms
+2025-05-29 14:08:49,841 - core_system - INFO - System initialized successfully in 4.64s with 5555 documents
+2025-05-29 14:08:49,841 - __main__ - INFO - RAG system initialized successfully
+2025-05-29 14:08:49,841 - __main__ - INFO - Testing query: 'Find apartments with wifi'
+2025-05-29 14:08:49,842 - database - INFO - Created new session: a265e8d1-41fd-4935-aed1-686245e03050
+2025-05-29 14:08:49,843 - core_system - INFO - Query understanding complete: search - 3 keywords
+2025-05-29 14:08:49,887 - __main__ - INFO - [OK] Query successful - got 898 character response
+2025-05-29 14:08:49,887 - __main__ - INFO - Testing query: 'Show me properties under $100'
+2025-05-29 14:08:49,887 - database - INFO - Created new session: a8e82617-0162-4e4a-896d-5159ae8fcf95
+2025-05-29 14:08:49,887 - core_system - INFO - Query understanding complete: search - 4 keywords
+2025-05-29 14:08:49,904 - __main__ - INFO - [OK] Query successful - got 99 character response
+2025-05-29 14:08:49,904 - __main__ - INFO - Testing query: 'What are some good places to stay?'
+2025-05-29 14:08:49,905 - database - INFO - Created new session: 66ee55a7-58da-4db7-9216-b2f8d2b02f81
+2025-05-29 14:08:49,905 - core_system - INFO - Query understanding complete: search - 6 keywords
+2025-05-29 14:08:49,919 - __main__ - INFO - [OK] Query successful - got 900 character response
+2025-05-29 14:08:49,919 - __main__ - INFO - RAG system testing completed
+2025-05-29 14:08:50,045 - __main__ - INFO - [OK] Testing RAG system completed successfully
+2025-05-29 14:08:50,046 - __main__ - INFO - 
+Executing step: Creating sample exports
+2025-05-29 14:08:50,046 - __main__ - INFO - Creating sample Excel exports...
+2025-05-29 14:08:50,046 - __main__ - INFO - Exporting database sample to Excel...
+2025-05-29 14:08:50,052 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 14:08:50,053 - excel_export - INFO - Loading all documents from database...
+2025-05-29 14:08:51,153 - database - INFO - Disconnected from MongoDB
+2025-05-29 14:08:51,153 - excel_export - ERROR - Error exporting database to Excel: No module named 'xlsxwriter'
+2025-05-29 14:08:51,153 - __main__ - ERROR - Failed to create sample exports: No module named 'xlsxwriter'
+2025-05-29 14:08:51,237 - __main__ - ERROR - [FAIL] Creating sample exports failed
+2025-05-29 14:08:51,237 - __main__ - INFO - 
+============================================================
+2025-05-29 14:08:51,237 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 14:08:51,238 - __main__ - INFO - ============================================================
+2025-05-29 14:08:51,238 - __main__ - INFO - Configuration:
+2025-05-29 14:08:51,238 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 14:08:51,238 - __main__ - INFO -   Database: local
+2025-05-29 14:08:51,239 - __main__ - INFO -   Collection: documents
+2025-05-29 14:08:51,239 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 14:08:51,239 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 14:08:51,239 - __main__ - INFO - 
+Files Created:
+2025-05-29 14:08:51,239 - __main__ - INFO -   [OK] ./data\faiss_index.bin (8.1 MB)
+2025-05-29 14:08:51,239 - __main__ - INFO -   [OK] ./data\processed_documents.pkl (100.3 MB)
+2025-05-29 14:08:51,240 - __main__ - INFO -   [OK] ./data\embeddings.pkl (8.1 MB)
+2025-05-29 14:08:51,240 - __main__ - INFO -   [OK] ./data\sample_airbnb_export.xlsx (22.7 MB)
+2025-05-29 14:08:51,240 - __main__ - INFO - 
+Next Steps:
+2025-05-29 14:08:51,240 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 14:08:51,240 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 14:08:51,240 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 14:08:51,241 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 14:08:51,241 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 14:08:51,241 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 14:08:51,241 - __main__ - INFO - 
+============================================================
+2025-05-29 14:08:51,242 - __main__ - ERROR - 
+Setup completed with 1 failed step(s): Creating sample exports

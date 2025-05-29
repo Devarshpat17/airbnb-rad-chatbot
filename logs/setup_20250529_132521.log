@@ -1,0 +1,70 @@
+2025-05-29 13:25:21,451 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_132521.log
+2025-05-29 13:25:21,451 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:25:21,451 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=True, skip_export=True
+2025-05-29 13:25:21,451 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 13:25:21,452 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 13:25:21,452 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 13:25:21,452 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:25:21,452 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:25:21,452 - __main__ - INFO - [OK] Creating directories completed successfully
+2025-05-29 13:25:21,452 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:25:21,452 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 13:25:21,459 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:25:21,464 - __main__ - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 13:25:21,465 - __main__ - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 13:25:21,466 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:25:21,466 - __main__ - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 13:25:21,466 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 13:25:21,466 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 13:25:21,466 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 13:25:21,466 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:25:22,342 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:25:22,342 - index_manager - INFO - Loading documents from MongoDB...
+2025-05-29 13:25:22,827 - index_manager - INFO - Loaded 1000 documents...
+2025-05-29 13:25:23,242 - index_manager - INFO - Loaded 2000 documents...
+2025-05-29 13:25:23,813 - index_manager - INFO - Loaded 3000 documents...
+2025-05-29 13:25:24,118 - index_manager - INFO - Loaded 4000 documents...
+2025-05-29 13:25:24,509 - index_manager - INFO - Loaded 5000 documents...
+2025-05-29 13:25:24,733 - index_manager - INFO - Loaded 5555 total documents
+2025-05-29 13:25:24,734 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:25:24,734 - index_manager - INFO - Processing documents for indexing...
+2025-05-29 13:25:24,948 - index_manager - INFO - Processed 1000 documents...
+2025-05-29 13:25:25,176 - index_manager - INFO - Processed 2000 documents...
+2025-05-29 13:25:25,383 - index_manager - INFO - Processed 3000 documents...
+2025-05-29 13:25:25,576 - index_manager - INFO - Processed 4000 documents...
+2025-05-29 13:25:25,781 - index_manager - INFO - Processed 5000 documents...
+2025-05-29 13:25:25,901 - index_manager - INFO - Processed 5555 documents successfully
+2025-05-29 13:25:25,901 - index_manager - ERROR - Error loading embedding model: 'Config' object has no attribute 'embedding_model'
+2025-05-29 13:25:25,902 - __main__ - ERROR - Failed to build search index: 'Config' object has no attribute 'embedding_model'
+2025-05-29 13:25:25,947 - __main__ - ERROR - [FAIL] Building search index failed
+2025-05-29 13:25:25,947 - __main__ - INFO - 
+============================================================
+2025-05-29 13:25:25,947 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:25:25,947 - __main__ - INFO - ============================================================
+2025-05-29 13:25:25,947 - __main__ - INFO - Configuration:
+2025-05-29 13:25:25,947 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:25:25,948 - __main__ - INFO -   Database: local
+2025-05-29 13:25:25,948 - __main__ - INFO -   Collection: documents
+2025-05-29 13:25:25,948 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 13:25:25,948 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:25:25,948 - __main__ - INFO - 
+Files Created:
+2025-05-29 13:25:25,948 - __main__ - INFO -   [MISSING] ./data\faiss_index.bin (not found)
+2025-05-29 13:25:25,948 - __main__ - INFO -   [OK] ./data\processed_documents.pkl (197.0 MB)
+2025-05-29 13:25:25,948 - __main__ - INFO -   [MISSING] ./data\embeddings.pkl (not found)
+2025-05-29 13:25:25,948 - __main__ - INFO -   [MISSING] ./data\sample_airbnb_export.xlsx (not found)
+2025-05-29 13:25:25,948 - __main__ - INFO - 
+Next Steps:
+2025-05-29 13:25:25,948 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:25:25,948 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:25:25,948 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 13:25:25,948 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:25:25,948 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 13:25:25,948 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:25:25,948 - __main__ - INFO - 
+============================================================
+2025-05-29 13:25:25,948 - __main__ - ERROR - 
+Setup completed with 1 failed step(s): Building search index

@@ -1,0 +1,139 @@
+2025-05-29 13:25:52,126 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_132552.log
+2025-05-29 13:25:52,126 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 13:25:52,126 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=True, skip_export=True
+2025-05-29 13:25:52,126 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 13:25:52,126 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 13:25:52,127 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 13:25:52,127 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 13:25:52,127 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 13:25:52,127 - __main__ - INFO - [OK] Creating directories completed successfully
+2025-05-29 13:25:52,127 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 13:25:52,127 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 13:25:52,135 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:25:52,140 - __main__ - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 13:25:52,141 - __main__ - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 13:25:52,142 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:25:52,142 - __main__ - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 13:25:52,142 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 13:25:52,142 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 13:25:52,142 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 13:25:52,142 - index_manager - INFO - Starting index creation process...
+2025-05-29 13:25:53,065 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 13:25:53,065 - index_manager - INFO - Loading documents from MongoDB...
+2025-05-29 13:25:53,561 - index_manager - INFO - Loaded 1000 documents...
+2025-05-29 13:25:53,977 - index_manager - INFO - Loaded 2000 documents...
+2025-05-29 13:25:54,497 - index_manager - INFO - Loaded 3000 documents...
+2025-05-29 13:25:54,799 - index_manager - INFO - Loaded 4000 documents...
+2025-05-29 13:25:55,188 - index_manager - INFO - Loaded 5000 documents...
+2025-05-29 13:25:55,405 - index_manager - INFO - Loaded 5555 total documents
+2025-05-29 13:25:55,406 - database - INFO - Disconnected from MongoDB
+2025-05-29 13:25:55,406 - index_manager - INFO - Processing documents for indexing...
+2025-05-29 13:25:55,614 - index_manager - INFO - Processed 1000 documents...
+2025-05-29 13:25:55,838 - index_manager - INFO - Processed 2000 documents...
+2025-05-29 13:25:56,072 - index_manager - INFO - Processed 3000 documents...
+2025-05-29 13:25:56,261 - index_manager - INFO - Processed 4000 documents...
+2025-05-29 13:25:56,463 - index_manager - INFO - Processed 5000 documents...
+2025-05-29 13:25:56,580 - index_manager - INFO - Processed 5555 documents successfully
+2025-05-29 13:25:56,580 - index_manager - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:25:56,581 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-29 13:25:56,581 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:25:59,258 - index_manager - INFO - Embedding model loaded successfully
+2025-05-29 13:25:59,258 - index_manager - INFO - Generating embeddings...
+2025-05-29 13:26:01,660 - index_manager - INFO - Generated embeddings for batch 1/56
+2025-05-29 13:26:04,056 - index_manager - INFO - Generated embeddings for batch 2/56
+2025-05-29 13:26:06,520 - index_manager - INFO - Generated embeddings for batch 3/56
+2025-05-29 13:26:09,048 - index_manager - INFO - Generated embeddings for batch 4/56
+2025-05-29 13:26:12,145 - index_manager - INFO - Generated embeddings for batch 5/56
+2025-05-29 13:26:15,991 - index_manager - INFO - Generated embeddings for batch 6/56
+2025-05-29 13:26:19,895 - index_manager - INFO - Generated embeddings for batch 7/56
+2025-05-29 13:26:23,819 - index_manager - INFO - Generated embeddings for batch 8/56
+2025-05-29 13:26:27,998 - index_manager - INFO - Generated embeddings for batch 9/56
+2025-05-29 13:26:32,115 - index_manager - INFO - Generated embeddings for batch 10/56
+2025-05-29 13:26:36,075 - index_manager - INFO - Generated embeddings for batch 11/56
+2025-05-29 13:26:40,187 - index_manager - INFO - Generated embeddings for batch 12/56
+2025-05-29 13:26:44,279 - index_manager - INFO - Generated embeddings for batch 13/56
+2025-05-29 13:26:48,310 - index_manager - INFO - Generated embeddings for batch 14/56
+2025-05-29 13:26:52,092 - index_manager - INFO - Generated embeddings for batch 15/56
+2025-05-29 13:26:55,885 - index_manager - INFO - Generated embeddings for batch 16/56
+2025-05-29 13:26:59,685 - index_manager - INFO - Generated embeddings for batch 17/56
+2025-05-29 13:27:03,475 - index_manager - INFO - Generated embeddings for batch 18/56
+2025-05-29 13:27:07,208 - index_manager - INFO - Generated embeddings for batch 19/56
+2025-05-29 13:27:10,917 - index_manager - INFO - Generated embeddings for batch 20/56
+2025-05-29 13:27:14,706 - index_manager - INFO - Generated embeddings for batch 21/56
+2025-05-29 13:27:18,408 - index_manager - INFO - Generated embeddings for batch 22/56
+2025-05-29 13:27:22,191 - index_manager - INFO - Generated embeddings for batch 23/56
+2025-05-29 13:27:26,114 - index_manager - INFO - Generated embeddings for batch 24/56
+2025-05-29 13:27:29,934 - index_manager - INFO - Generated embeddings for batch 25/56
+2025-05-29 13:27:33,690 - index_manager - INFO - Generated embeddings for batch 26/56
+2025-05-29 13:27:37,433 - index_manager - INFO - Generated embeddings for batch 27/56
+2025-05-29 13:27:41,152 - index_manager - INFO - Generated embeddings for batch 28/56
+2025-05-29 13:27:44,906 - index_manager - INFO - Generated embeddings for batch 29/56
+2025-05-29 13:27:48,718 - index_manager - INFO - Generated embeddings for batch 30/56
+2025-05-29 13:27:52,486 - index_manager - INFO - Generated embeddings for batch 31/56
+2025-05-29 13:27:56,234 - index_manager - INFO - Generated embeddings for batch 32/56
+2025-05-29 13:28:00,149 - index_manager - INFO - Generated embeddings for batch 33/56
+2025-05-29 13:28:03,919 - index_manager - INFO - Generated embeddings for batch 34/56
+2025-05-29 13:28:07,652 - index_manager - INFO - Generated embeddings for batch 35/56
+2025-05-29 13:28:11,417 - index_manager - INFO - Generated embeddings for batch 36/56
+2025-05-29 13:28:15,157 - index_manager - INFO - Generated embeddings for batch 37/56
+2025-05-29 13:28:18,870 - index_manager - INFO - Generated embeddings for batch 38/56
+2025-05-29 13:28:22,604 - index_manager - INFO - Generated embeddings for batch 39/56
+2025-05-29 13:28:26,352 - index_manager - INFO - Generated embeddings for batch 40/56
+2025-05-29 13:28:30,183 - index_manager - INFO - Generated embeddings for batch 41/56
+2025-05-29 13:28:33,945 - index_manager - INFO - Generated embeddings for batch 42/56
+2025-05-29 13:28:37,787 - index_manager - INFO - Generated embeddings for batch 43/56
+2025-05-29 13:28:41,540 - index_manager - INFO - Generated embeddings for batch 44/56
+2025-05-29 13:28:45,305 - index_manager - INFO - Generated embeddings for batch 45/56
+2025-05-29 13:28:49,116 - index_manager - INFO - Generated embeddings for batch 46/56
+2025-05-29 13:28:52,855 - index_manager - INFO - Generated embeddings for batch 47/56
+2025-05-29 13:28:56,824 - index_manager - INFO - Generated embeddings for batch 48/56
+2025-05-29 13:29:00,617 - index_manager - INFO - Generated embeddings for batch 49/56
+2025-05-29 13:29:04,315 - index_manager - INFO - Generated embeddings for batch 50/56
+2025-05-29 13:29:08,116 - index_manager - INFO - Generated embeddings for batch 51/56
+2025-05-29 13:29:11,947 - index_manager - INFO - Generated embeddings for batch 52/56
+2025-05-29 13:29:15,675 - index_manager - INFO - Generated embeddings for batch 53/56
+2025-05-29 13:29:19,456 - index_manager - INFO - Generated embeddings for batch 54/56
+2025-05-29 13:29:23,241 - index_manager - INFO - Generated embeddings for batch 55/56
+2025-05-29 13:29:25,357 - index_manager - INFO - Generated embeddings for batch 56/56
+2025-05-29 13:29:25,389 - index_manager - INFO - Cached embeddings to ./data\embeddings.pkl
+2025-05-29 13:29:25,390 - index_manager - INFO - Creating FAISS index...
+2025-05-29 13:29:25,394 - index_manager - INFO - Created FAISS index with 5555 vectors
+2025-05-29 13:29:26,258 - index_manager - INFO - Saved processed documents to ./data\processed_documents.pkl
+2025-05-29 13:29:26,277 - index_manager - INFO - Saved FAISS index to ./data\faiss_index.bin
+2025-05-29 13:29:26,281 - index_manager - INFO - Saved embeddings to ./data\embeddings.npy
+2025-05-29 13:29:26,282 - index_manager - INFO - Index creation completed successfully
+2025-05-29 13:29:26,282 - __main__ - INFO - Successfully built index with 5555 documents
+2025-05-29 13:29:26,282 - __main__ - INFO - Embedding dimension: 384
+2025-05-29 13:29:26,282 - __main__ - INFO - FAISS index size: 5555
+2025-05-29 13:29:26,333 - __main__ - INFO - [OK] Building search index completed successfully
+2025-05-29 13:29:26,333 - __main__ - INFO - 
+============================================================
+2025-05-29 13:29:26,333 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 13:29:26,333 - __main__ - INFO - ============================================================
+2025-05-29 13:29:26,333 - __main__ - INFO - Configuration:
+2025-05-29 13:29:26,333 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 13:29:26,333 - __main__ - INFO -   Database: local
+2025-05-29 13:29:26,333 - __main__ - INFO -   Collection: documents
+2025-05-29 13:29:26,333 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 13:29:26,333 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 13:29:26,333 - __main__ - INFO - 
+Files Created:
+2025-05-29 13:29:26,333 - __main__ - INFO -   [OK] ./data\faiss_index.bin (8.1 MB)
+2025-05-29 13:29:26,333 - __main__ - INFO -   [OK] ./data\processed_documents.pkl (100.3 MB)
+2025-05-29 13:29:26,333 - __main__ - INFO -   [OK] ./data\embeddings.pkl (8.1 MB)
+2025-05-29 13:29:26,333 - __main__ - INFO -   [MISSING] ./data\sample_airbnb_export.xlsx (not found)
+2025-05-29 13:29:26,333 - __main__ - INFO - 
+Next Steps:
+2025-05-29 13:29:26,333 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 13:29:26,333 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 13:29:26,334 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 13:29:26,334 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 13:29:26,334 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 13:29:26,334 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 13:29:26,334 - __main__ - INFO - 
+============================================================
+2025-05-29 13:29:26,334 - __main__ - INFO - 
+Setup completed successfully!

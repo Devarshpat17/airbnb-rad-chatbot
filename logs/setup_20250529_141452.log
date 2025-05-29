@@ -1,0 +1,65 @@
+2025-05-29 14:14:52,930 - __main__ - INFO - Setup logging initialized. Log file: ./logs\setup_20250529_141452.log
+2025-05-29 14:14:52,931 - __main__ - INFO - Starting Airbnb RAG System setup...
+2025-05-29 14:14:52,931 - __main__ - INFO - Arguments: force_rebuild=False, skip_test=True, skip_export=False
+2025-05-29 14:14:52,931 - __main__ - INFO - 
+Executing step: Creating directories
+2025-05-29 14:14:52,931 - __main__ - INFO - Created/verified directory: ./data
+2025-05-29 14:14:52,931 - __main__ - INFO - Created/verified directory: ./logs
+2025-05-29 14:14:52,931 - __main__ - INFO - Created/verified directory: ./data\cache
+2025-05-29 14:14:52,931 - __main__ - INFO - Created/verified directory: ./data\exports
+2025-05-29 14:14:52,945 - __main__ - INFO - [OK] Creating directories completed successfully
+2025-05-29 14:14:52,945 - __main__ - INFO - 
+Executing step: Testing MongoDB connection
+2025-05-29 14:14:52,945 - __main__ - INFO - Testing MongoDB connection...
+2025-05-29 14:14:52,953 - database - INFO - Connected to MongoDB: local.documents
+2025-05-29 14:14:52,958 - __main__ - INFO - Found 5555 documents in collection 'documents'
+2025-05-29 14:14:52,959 - __main__ - INFO - Sample document keys: ['_id', 'listing_url', 'name', 'summary', 'space', 'description', 'neighborhood_overview', 'notes', 'transit', 'access']...
+2025-05-29 14:14:52,960 - database - INFO - Disconnected from MongoDB
+2025-05-29 14:14:52,960 - __main__ - INFO - [OK] Testing MongoDB connection completed successfully
+2025-05-29 14:14:52,960 - __main__ - INFO - 
+Executing step: Building search index
+2025-05-29 14:14:52,960 - __main__ - INFO - Initializing Index Manager...
+2025-05-29 14:14:52,960 - __main__ - INFO - Building search index (this may take a while)...
+2025-05-29 14:14:52,960 - index_manager - INFO - Starting index creation process...
+2025-05-29 14:14:53,278 - index_manager - INFO - Loaded existing indexes successfully
+2025-05-29 14:14:53,278 - index_manager - INFO - Using existing indexes
+2025-05-29 14:14:53,278 - __main__ - INFO - Successfully built index with 5555 documents
+2025-05-29 14:14:53,278 - __main__ - INFO - Embedding dimension: 384
+2025-05-29 14:14:53,278 - __main__ - INFO - FAISS index size: 5555
+2025-05-29 14:14:53,341 - __main__ - INFO - [OK] Building search index completed successfully
+2025-05-29 14:14:53,341 - __main__ - INFO - 
+Executing step: Creating project documentation
+2025-05-29 14:14:53,341 - __main__ - INFO - Creating project documentation...
+2025-05-29 14:14:53,341 - __main__ - INFO - Creating project models and functions documentation...
+2025-05-29 14:14:53,341 - project_documentation - INFO - Analyzing project in .
+2025-05-29 14:14:53,416 - project_documentation - INFO - Documentation Excel created: data/project_models_and_functions.xlsx
+2025-05-29 14:14:53,416 - __main__ - INFO - [OK] Project documentation created: data/project_models_and_functions.xlsx
+2025-05-29 14:14:53,416 - __main__ - INFO - [OK] Creating project documentation completed successfully
+2025-05-29 14:14:53,416 - __main__ - INFO - 
+============================================================
+2025-05-29 14:14:53,416 - __main__ - INFO - AIRBNB RAG SYSTEM SETUP COMPLETE
+2025-05-29 14:14:53,416 - __main__ - INFO - ============================================================
+2025-05-29 14:14:53,416 - __main__ - INFO - Configuration:
+2025-05-29 14:14:53,416 - __main__ - INFO -   MongoDB URI: mongodb://localhost:27017/
+2025-05-29 14:14:53,416 - __main__ - INFO -   Database: local
+2025-05-29 14:14:53,416 - __main__ - INFO -   Collection: documents
+2025-05-29 14:14:53,416 - __main__ - INFO -   Data Directory: ./data
+2025-05-29 14:14:53,416 - __main__ - INFO -   Embedding Model: sentence-transformers/all-MiniLM-L6-v2
+2025-05-29 14:14:53,416 - __main__ - INFO - 
+Files Created:
+2025-05-29 14:14:53,416 - __main__ - INFO -   [OK] ./data\faiss_index.bin (8.1 MB)
+2025-05-29 14:14:53,417 - __main__ - INFO -   [OK] ./data\processed_documents.pkl (100.3 MB)
+2025-05-29 14:14:53,417 - __main__ - INFO -   [OK] ./data\embeddings.pkl (8.1 MB)
+2025-05-29 14:14:53,417 - __main__ - INFO -   [OK] ./data\project_models_and_functions.xlsx (0.0 MB)
+2025-05-29 14:14:53,417 - __main__ - INFO - 
+Next Steps:
+2025-05-29 14:14:53,417 - __main__ - INFO -   1. Run 'python main.py' to start the web interface
+2025-05-29 14:14:53,418 - __main__ - INFO -   2. Open your browser to http://localhost:7860
+2025-05-29 14:14:53,418 - __main__ - INFO -   3. Try some sample queries like:
+2025-05-29 14:14:53,418 - __main__ - INFO -      - 'Find 2-bedroom apartments with WiFi'
+2025-05-29 14:14:53,418 - __main__ - INFO -      - 'Show me places under $100'
+2025-05-29 14:14:53,418 - __main__ - INFO -      - 'What are some highly rated properties?'
+2025-05-29 14:14:53,418 - __main__ - INFO - 
+============================================================
+2025-05-29 14:14:53,418 - __main__ - INFO - 
+Setup completed successfully!
