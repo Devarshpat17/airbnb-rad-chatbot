@@ -1,6 +1,6 @@
 # JSON RAG System 🤖
 
-A comprehensive Retrieval-Augmented Generation (RAG) system designed for intelligent search and analysis of JSON documents with advanced NLP capabilities and real-time web interface.
+A comprehensive Retrieval-Augmented Generation (RAG) system designed for intelligent search and analysis of JSON documents with advanced NLP capabilities and real-time web interface. The system uses semantic search, fuzzy matching, and advanced query understanding to provide intelligent information retrieval from MongoDB document collections.
 
 ## 🌟 Overview
 
@@ -90,10 +90,10 @@ The JSON RAG System is an enterprise-grade solution that combines semantic searc
    MONGODB_COLLECTION = "documents"
    ```
 
-3. **Initialize System**:
+3. **Initialize System** (Build Search Indexes):
    ```bash
-   # Run the automated setup
-   python setup_airbnb_index.py
+   # Build indexes and embeddings (REQUIRED FIRST STEP)
+   python -c "from index_manager import IndexManager; IndexManager().create_complete_index()"
    ```
 
 4. **Launch Application**:
@@ -104,15 +104,14 @@ The JSON RAG System is an enterprise-grade solution that combines semantic searc
 5. **Access Interface**:
    Open your browser and navigate to `http://localhost:7860`
 
-### Alternative Setup (Manual)
+### Verify Installation
 
-If automated setup fails:
 ```bash
-# Build indexes manually
-python -c "from index_manager import IndexManager; IndexManager().create_complete_index()"
+# Test system components
+python -c "from core_system import JSONRAGSystem; system = JSONRAGSystem(); print('System ready!')" 
 
-# Start the application
-python main.py
+# Check index statistics
+python -c "from index_manager import IndexManager; print(IndexManager().get_index_stats())"
 ```
 
 ## 💾 Data Configuration
@@ -299,22 +298,20 @@ json_rag_system/
 │
 ├── 📁 Data Processing
 │   ├── index_manager.py        # Index creation and management
+│   ├── search_system.py        # Unified search system coordination
 │   ├── utils.py                # Text processing and optimization utilities
 │   └── airbnb_config.py        # Airbnb-specific field mappings
 │
-├── 📁 Setup & Initialization
-│   └── setup_airbnb_index.py   # Automated system setup
-│
-├── 📁 Generated Data
+├── 📁 Generated Data (Created after first run)
 │   ├── data/                   # Processed documents and indexes
 │   │   ├── faiss_index.bin     # Vector search index
 │   │   ├── embeddings_cache.pkl # Cached embeddings
-│   │   └── processed_documents.pkl # Processed document store
+│   │   └── models_and_functions_catalog.xlsx # System catalog
 │   └── logs/                   # Application logs
 │
 └── 📁 Documentation
     ├── README.md               # This file
-    ├── PROJECT_DOCUMENTATION.md # Detailed technical documentation
+    ├── COMPLETE_PROJECT_EXPLANATION.txt # Detailed technical documentation
     └── requirements.txt        # Python dependencies
 ```
 
@@ -505,6 +502,91 @@ For support and questions:
 | Query Response | <1 second | 1-2 seconds | 2-3 seconds |
 | Memory Usage | 1-2 GB | 2-4 GB | 4-8 GB |
 | Storage Required | 100 MB | 500 MB | 1-2 GB |
+
+---
+
+## 🚀 Execution Order Guide
+
+### **FIRST TIME SETUP**
+
+1. **Environment Setup**:
+   ```bash
+   # Navigate to project directory
+   cd json_rag_system
+   
+   # Install dependencies
+   pip install -r requirements.txt
+   
+   # Ensure MongoDB is running
+   # Windows: Check Services or start MongoDB manually
+   # Linux/Mac: sudo systemctl start mongod
+   ```
+
+2. **Build Search Indexes** (CRITICAL FIRST STEP):
+   ```bash
+   # Create FAISS index and embeddings
+   python -c "from index_manager import IndexManager; IndexManager().create_complete_index()"
+   ```
+   **⚠️ This step creates the search infrastructure - system won't work without it!**
+
+3. **Launch Application**:
+   ```bash
+   python main.py
+   ```
+   **Access at: http://localhost:7860**
+
+### **DAILY USAGE**
+
+1. **Start System**: `python main.py`
+2. **Test Query**: "Hello, what can you help me with?"
+3. **Search**: "Find 2-bedroom apartments under $150 with WiFi"
+4. **Follow-up**: System maintains conversation context
+
+### **DEVELOPMENT WORKFLOW**
+
+**For Code Changes:**
+```bash
+# 1. Modify files (core_system.py, airbnb_config.py, etc.)
+# 2. Restart application
+Ctrl+C  # Stop current instance
+python main.py  # Restart
+```
+
+**For Schema/Data Changes:**
+```bash
+# 1. Update configuration files
+# 2. Rebuild indexes
+python -c "from index_manager import IndexManager; IndexManager().rebuild_index()"
+# 3. Restart application
+python main.py
+```
+
+### **VERIFICATION COMMANDS**
+
+```bash
+# Test system health
+python -c "from core_system import JSONRAGSystem; system = JSONRAGSystem(); print('System OK!')"
+
+# Check index status
+python -c "from index_manager import IndexManager; print(IndexManager().get_index_stats())"
+
+# Verify MongoDB connection
+python -c "from database import MongoDBConnector; print('DB connected!' if MongoDBConnector().test_connection() else 'DB error!')"
+```
+
+### **QUICK START (Minimal Steps)**
+```bash
+# 1. Install
+pip install -r requirements.txt
+
+# 2. Build indexes (REQUIRED)
+python -c "from index_manager import IndexManager; IndexManager().create_complete_index()"
+
+# 3. Launch
+python main.py
+
+# 4. Open: http://localhost:7860
+```
 
 ---
 
