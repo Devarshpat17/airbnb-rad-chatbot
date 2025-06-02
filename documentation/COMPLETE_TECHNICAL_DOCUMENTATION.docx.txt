@@ -3278,16 +3278,7 @@ DATABASE_CONFIG = {
 }
 ```
 
-MongoDB Atlas Configuration
-```python
-DATABASE_CONFIG = {
-    'uri': 'mongodb+srv://username:password@cluster.xyz.mongodb.net/database',
-    'database': 'airbnb_cloud',
-    'collection': 'properties',
-    'timeout': 60000,
-    'retry_writes': True,
-    'w': 'majority'
-}
+
 ```
 
 CONNECTION PARAMETERS
