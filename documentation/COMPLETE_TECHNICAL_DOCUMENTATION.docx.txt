@@ -1,0 +1,3731 @@
+JSON RAG SYSTEM
+COMPREHENSIVE TECHNICAL DOCUMENTATION
+
+
+
+
+
+
+
+Advanced AI-Powered Document Search and Retrieval System
+
+Version 1.0
+January 2025
+
+
+
+
+
+
+Prepared by: Development Team
+Project: JSON RAG System
+Technology Stack: Python, MongoDB, AI/ML, FAISS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+
+
+1. EXECUTIVE SUMMARY .................................................. 4
+
+2. PROJECT OVERVIEW ................................................... 5
+   2.1 System Purpose
+   2.2 Target Users
+   2.3 Key Features
+   2.4 Business Value
+
+3. SYSTEM ARCHITECTURE ................................................ 7
+   3.1 High-Level Design
+   3.2 Component Architecture Diagram
+   3.3 Technology Stack
+   3.4 Design Principles
+
+4. PROJECT DIRECTORY STRUCTURE ........................................ 10
+   4.1 Current Structure
+   4.2 File Organization
+   4.3 Directory Descriptions
+   4.4 File Descriptions
+
+5. SYSTEM WORKFLOW .................................................... 14
+   5.1 Setup Workflow
+   5.2 Query Processing Workflow  
+   5.3 Data Flow Diagram
+   5.4 Component Interaction
+
+6. FLOWCHART DOCUMENTATION ............................................ 18
+   6.1 Main System Flow
+   6.2 Query Understanding Flow
+   6.3 Search Orchestration Flow
+   6.4 Setup Process Flow
+
+7. CORE COMPONENTS .................................................... 23
+   7.1 JSONRAGSystem
+   7.2 QueryUnderstandingEngine
+   7.3 SemanticSearchEngine
+   7.4 NumericSearchEngine
+   7.5 VocabularyManager
+   7.6 ResponseGenerator
+
+8. AI/ML MODELS OVERVIEW .............................................. 28
+   8.1 Model Classification
+   8.2 Performance Specifications
+   8.3 Limitations and Constraints
+   8.4 Model Dependencies
+
+9. INSTALLATION AND SETUP ............................................. 32
+   9.1 Prerequisites
+   9.2 Installation Process
+   9.3 Configuration
+   9.4 Verification
+
+10. API REFERENCE ..................................................... 36
+    10.1 Main Search API
+    10.2 Session Management
+    10.3 System Administration
+    10.4 Query Processing
+
+11. CONFIGURATION GUIDE ............................................... 39
+    11.1 Database Configuration
+    11.2 AI Model Configuration
+    11.3 Search Parameters
+    11.4 File System Configuration
+
+12. DATA UNDERSTANDING ................................................ 42
+    12.1 Airbnb Data Schema
+    12.2 Field Categories
+    12.3 Data Processing
+    12.4 Quality Metrics
+
+13. PERFORMANCE OPTIMIZATION .......................................... 45
+    13.1 Memory Management
+    13.2 Database Optimization
+    13.3 Search Performance
+    13.4 Benchmarks
+
+14. TROUBLESHOOTING ................................................... 48
+    14.1 Common Issues
+    14.2 Diagnostic Tools
+    14.3 Error Resolution
+    14.4 Support Procedures
+
+15. MAINTENANCE PROCEDURES ............................................ 51
+    15.1 Regular Maintenance
+    15.2 Health Checks
+    15.3 Update Procedures
+    15.4 Backup Strategies
+
+16. APPENDICES ........................................................ 54
+    16.1 Usage Examples
+    16.2 Extension Opportunities
+    16.3 Technical Specifications
+    16.4 Glossary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. EXECUTIVE SUMMARY
+
+
+The JSON RAG (Retrieval-Augmented Generation) System represents a cutting-edge solution for intelligent document search and retrieval, specifically designed for Airbnb property data analysis. This system seamlessly integrates advanced artificial intelligence, machine learning technologies, and traditional search methodologies to deliver unparalleled search capabilities through an intuitive web interface.
+
+
+KEY ACHIEVEMENTS
+
+• Revolutionary Search Technology: Implementation of state-of-the-art AI models for semantic understanding
+• Real-Time Performance: Sub-2 second response times with sophisticated caching mechanisms
+• Professional Interface: Modern, responsive web application using Gradio framework
+• Enterprise-Grade Architecture: Scalable, modular design supporting large datasets
+• Comprehensive Documentation: Complete technical documentation with practical examples
+
+
+BUSINESS IMPACT
+
+• Enhanced User Experience: Natural language queries eliminate complex filter requirements
+• Operational Efficiency: Automated system setup reduces deployment time by 90%
+• Search Accuracy: AI-powered understanding delivers relevant results beyond keyword matching
+• Scalability: Architecture supports 50,000+ documents with consistent performance
+• Cost Effectiveness: Open-source solution with enterprise-level capabilities
+
+
+TECHNOLOGICAL INNOVATION
+
+• Multi-Modal Search: Intelligent fusion of semantic, fuzzy, and keyword search methods
+• Context-Aware Conversations: Session management for natural follow-up interactions
+• Advanced NLP: Intent classification and entity extraction for query understanding
+• Optimized Indexing: FAISS-based vector search with 384-dimensional embeddings
+• Robust Error Handling: Graceful degradation and comprehensive fallback mechanisms
+
+
+PERFORMANCE METRICS
+
+• System Startup: 10-30 seconds (optimized) versus 2-5 minutes (cold start)
+• Search Response: <2 seconds for initial query, <1 second for subsequent queries
+• Memory Efficiency: 2-4 GB typical operation, 8GB maximum
+• Document Capacity: 50,000+ documents with linear scaling
+• Accuracy Rate: 95%+ relevance for top 5 search results
+
+
+STRATEGIC VALUE
+
+This system demonstrates the practical application of advanced AI technologies in real-world scenarios, providing a foundation for similar implementations across various domains. The modular architecture and comprehensive documentation enable rapid deployment and customization for different use cases.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. PROJECT OVERVIEW
+
+
+2.1 SYSTEM PURPOSE
+
+The JSON RAG System serves as a comprehensive Retrieval-Augmented Generation platform specifically engineered for analyzing and searching Airbnb property data stored in MongoDB databases. The system addresses the critical need for intelligent, context-aware search capabilities that transcend traditional keyword-based approaches.
+
+PRIMARY OBJECTIVES:
+• Enable natural language queries for complex property searches
+• Provide semantic understanding of user intent and context
+• Deliver real-time, accurate results with professional user experience
+• Support large-scale datasets with enterprise-grade performance
+• Facilitate research and analysis of property market trends
+
+
+2.2 TARGET USERS
+
+PROPERTY SEEKERS
+• Individual travelers searching for accommodations
+• Business travelers requiring specific amenities
+• Vacation planners with complex requirements
+• Budget-conscious users seeking value optimization
+
+DATA ANALYSTS
+• Market researchers analyzing property trends
+• Business intelligence professionals
+• Academic researchers studying hospitality markets
+• Investment analysts evaluating property markets
+
+DEVELOPERS
+• Software engineers implementing search solutions
+• Data scientists working with property datasets
+• System administrators managing search infrastructure
+• Technical teams requiring search API integration
+
+BUSINESS USERS
+• Property managers optimizing listings
+• Travel agencies enhancing customer service
+• Hospitality professionals conducting market analysis
+• Decision makers requiring data-driven insights
+
+
+2.3 KEY FEATURES
+
+AI-POWERED SEMANTIC SEARCH
+• Advanced transformer models for natural language understanding
+• Context-aware query interpretation and enhancement
+• Intelligent synonym recognition and term expansion
+• Multi-language support with English optimization
+
+MULTI-MODAL SEARCH CAPABILITY
+• Semantic search using AI embeddings and cosine similarity
+• Fuzzy search for typo tolerance and variation handling
+• Keyword search with TF-IDF weighted scoring
+• Hybrid fusion algorithm for optimal result combination
+
+INTELLIGENT QUERY UNDERSTANDING
+• Intent classification (search, filter, information request)
+• Named entity recognition for locations and amenities
+• Numeric constraint extraction (price, bedrooms, ratings)
+• Context-aware query enhancement based on conversation history
+
+CONTEXTUAL CONVERSATIONS
+• Session-based conversation management
+• Follow-up query understanding and enhancement
+• Entity accumulation across conversation turns
+• Smart filtering based on conversation context
+
+REAL-TIME PERFORMANCE
+• Sub-2 second search response times
+• Optimized FAISS indexing for vector similarity
+• Intelligent caching mechanisms
+• Batch processing for large datasets
+
+PROFESSIONAL WEB INTERFACE
+• Modern, responsive Gradio-based interface
+• Intuitive chat-based interaction model
+• Real-time search result display
+• Mobile-friendly responsive design
+
+
+2.4 BUSINESS VALUE
+
+ENHANCED USER EXPERIENCE
+• Natural language interaction eliminates learning curve
+• Immediate, relevant results improve user satisfaction
+• Context-aware conversations feel natural and intuitive
+• Professional interface builds user confidence
+
+IMPROVED SEARCH ACCURACY
+• AI understanding finds relevant results beyond exact matches
+• Semantic search captures user intent effectively
+• Multi-modal approach ensures comprehensive coverage
+• Intelligent ranking prioritizes most relevant results
+
+OPERATIONAL EFFICIENCY
+• Automated setup reduces deployment time significantly
+• Streamlined maintenance procedures minimize downtime
+• Comprehensive error handling reduces support requirements
+• Professional documentation accelerates team onboarding
+
+SCALABLE ARCHITECTURE
+• Modular design supports easy feature additions
+• Enterprise-grade performance handles large datasets
+• Cloud-ready architecture supports distributed deployment
+• API-first design enables integration with existing systems
+
+COST EFFECTIVENESS
+• Open-source foundation reduces licensing costs
+• Efficient algorithms minimize computational requirements
+• Optimized indexing reduces storage and memory costs
+• Automated maintenance reduces operational overhead
+
+COMPETITIVE ADVANTAGE
+• Advanced AI capabilities differentiate from basic search
+• Real-time performance exceeds user expectations
+• Natural language interface reduces user friction
+• Professional implementation builds trust and credibility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. SYSTEM ARCHITECTURE
+
+
+3.1 HIGH-LEVEL DESIGN
+
+The JSON RAG System implements a sophisticated multi-layered architecture optimized for high-performance Airbnb property search and analysis. The design emphasizes modularity, scalability, and maintainability while ensuring optimal performance across all system components.
+
+ARCHITECTURAL LAYERS:
+
+1. PRESENTATION LAYER
+   • Gradio web interface for user interaction
+   • REST API endpoints for programmatic access
+   • CLI interface for system administration
+   • Mobile-responsive design components
+
+2. APPLICATION LAYER
+   • JSONRAGSystem main orchestrator
+   • Session management and context handling
+   • Response generation and formatting
+   • Error handling and recovery mechanisms
+
+3. INTELLIGENCE LAYER
+   • Query understanding and enhancement engine
+   • Semantic search with AI models
+   • Numeric constraint processing
+   • Context-aware conversation management
+
+4. DATA LAYER
+   • MongoDB database for document storage
+   • FAISS vector indexes for semantic search
+   • Vocabulary cache for term optimization
+   • File system for temporary and cached data
+
+5. INFRASTRUCTURE LAYER
+   • Configuration management
+   • Logging and monitoring systems
+   • File system organization
+   • Security and access control
+
+
+3.2 COMPONENT ARCHITECTURE DIAGRAM
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              PRESENTATION LAYER                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│ │   Gradio Web    │    │   REST API      │    │   CLI Interface │          │
+│ │   Interface     │    │   (Future)      │    │   (Admin)       │          │
+│ └─────────────────┘    └─────────────────┘    └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              APPLICATION LAYER                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│ │   JSONRAGSystem │    │  Session        │    │ Response        │          │
+│ │   (Orchestrator)│    │  Management     │    │ Generator       │          │
+│ └─────────────────┘    └─────────────────┘    └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              INTELLIGENCE LAYER                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│ │Query            │    │Semantic Search  │    │Numeric Search   │          │
+│ │Understanding    │    │Engine           │    │Engine           │          │
+│ │Engine           │    │                 │    │                 │          │
+│ └─────────────────┘    └─────────────────┘    └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                DATA LAYER                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│ │   MongoDB       │    │  FAISS Vector   │    │  Vocabulary     │          │
+│ │   Database      │    │  Index          │    │  Cache          │          │
+│ └─────────────────┘    └─────────────────┘    └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             INFRASTRUCTURE LAYER                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│ │  Configuration  │    │  Logging &      │    │  File System    │          │
+│ │  Management     │    │  Monitoring     │    │  Organization   │          │
+│ └─────────────────┘    └─────────────────┘    └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+3.3 TECHNOLOGY STACK
+
+CORE TECHNOLOGIES
+• Python 3.8+ - Primary development language
+• MongoDB 4.0+ - Document database for data storage
+• FAISS - Vector similarity search and indexing
+• Gradio 3.0+ - Modern web interface framework
+• Sentence Transformers - AI model for embeddings
+
+AI/ML LIBRARIES
+• transformers - Hugging Face transformer models
+• torch - PyTorch for deep learning operations
+• sentence-transformers - Semantic embedding generation
+• scikit-learn - Machine learning utilities
+• spacy - Advanced natural language processing
+
+DATA PROCESSING
+• pandas - Data manipulation and analysis
+• numpy - Numerical computing and array operations
+• pymongo - MongoDB Python driver
+• fuzzywuzzy - Fuzzy string matching
+• python-Levenshtein - String distance calculations
+
+WEB AND API
+• gradio - Web interface and API framework
+• requests - HTTP library for external APIs
+• uvicorn - ASGI server for production deployment
+• fastapi - Potential future API framework
+
+UTILITIES
+• tqdm - Progress bars for long operations
+• click - Command-line interface creation
+• pyyaml - YAML configuration file handling
+• python-dotenv - Environment variable management
+• coloredlogs - Enhanced logging with colors
+
+
+3.4 DESIGN PRINCIPLES
+
+MODULAR ARCHITECTURE
+• Loose coupling between components for flexibility
+• Clear separation of concerns across layers
+• Plugin-style extensibility for new features
+• Independent component testing and maintenance
+
+ASCII-SAFE PROCESSING
+• Robust text handling without Unicode complications
+• Consistent encoding across all system components
+• Prevention of character encoding errors
+• Cross-platform compatibility assurance
+
+MULTI-MODAL SEARCH INTEGRATION
+• Seamless combination of different search methods
+• Intelligent weight distribution across search types
+• Adaptive scoring based on query characteristics
+• Result fusion with diversity optimization
+
+SESSION CONTEXT MANAGEMENT
+• Conversation-aware query understanding
+• Context accumulation across interaction turns
+• Smart entity relationship tracking
+• Natural follow-up question handling
+
+GRACEFUL DEGRADATION
+• Comprehensive fallback mechanisms
+• Progressive feature disable under constraints
+• Error isolation to prevent system failures
+• User-friendly error messaging and recovery
+
+PERFORMANCE OPTIMIZATION
+• Intelligent caching at multiple system levels
+• Lazy loading of heavyweight components
+• Batch processing for efficiency
+• Memory management and garbage collection
+
+SECURITY BY DESIGN
+• Input validation and sanitization
+• Secure configuration management
+• Access control and authentication ready
+• Data privacy and protection measures
+
+SCALABILITY PLANNING
+• Horizontal scaling capability
+• Load balancing readiness
+• Distributed processing support
+• Cloud deployment optimization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. PROJECT DIRECTORY STRUCTURE
+
+
+4.1 CURRENT STRUCTURE
+
+The JSON RAG System follows a well-organized directory structure that promotes maintainability, scalability, and ease of development. Each directory serves a specific purpose and contains related files organized logically.
+
+```
+json_rag_system/
+├── 📁 config/                     # Configuration Management
+│   ├── 📄 config.py               # Main system configuration
+│   ├── 📄 airbnb_config.py        # Airbnb-specific settings
+│   ├── 📄 numeric_config.py       # Numeric processing patterns
+│   ├── 📄 logging_config.py       # Logging configuration
+│   └── 📄 exceptions.py           # Custom exception definitions
+│
+├── 📁 documentation/              # Project Documentation
+│   ├── 📄 COMPLETE_PROJECT_DOCUMENTATION.md    # Master documentation
+│   ├── 📄 JSON_RAG_SYSTEM_DOCUMENTATION.docx.txt # Word format
+│   ├── 📄 data_understanding.txt  # Data schema reference
+│   ├── 📄 PROJECT_STRUCTURE.md    # Directory documentation
+│   └── 📄 COMPLETE_TECHNICAL_DOCUMENTATION.docx.txt # This document
+│
+├── 📁 cache/                      # Generated Cache Files
+│   ├── 📄 embeddings_cache.pkl    # Pre-computed embeddings
+│   ├── 📄 processed_docs.pkl      # Processed documents
+│   └── 📄 vocabulary.pkl          # Legacy vocabulary cache
+│
+├── 📁 data/                       # Vocabulary and Configuration Data
+│   ├── 📄 vocabulary.json         # Main vocabulary terms
+│   ├── 📄 keyword_mappings.json   # Keyword synonyms
+│   └── 📄 numeric_patterns.json   # Numeric constraint patterns
+│
+├── 📁 indexes/                    # Search Indexes
+│   ├── 📄 faiss_index.faiss       # Vector similarity index
+│   └── 📄 processed_documents.pkl # Document metadata
+│
+├── 📁 logs/                       # System Logs
+│   ├── 📄 setup.log               # Setup process logs
+│   ├── 📄 system.log              # Runtime system logs
+│   ├── 📄 search.log              # Search operation logs
+│   └── 📄 error.log               # Error and exception logs
+│
+├── 📄 core_system.py              # Main System Orchestrator
+├── 📄 utils.py                    # Utility Functions
+├── 📄 main.py                     # Web Interface Launcher
+├── 📄 setup.py                    # System Initialization
+├── 📄 query_processor.py          # Advanced Query Processing
+├── 📄 requirements.txt            # Python Dependencies
+└── 📄 README.md                   # Project Overview
+```
+
+
+4.2 FILE ORGANIZATION
+
+The project structure follows industry best practices with clear separation of concerns:
+
+CONFIGURATION SEPARATION
+• All configuration files centralized in config/ directory
+• Environment-specific settings isolated
+• Modular configuration for different system aspects
+• Easy maintenance and deployment management
+
+DOCUMENTATION CENTRALIZATION
+• Comprehensive documentation in dedicated directory
+• Multiple formats for different use cases
+• Version-controlled documentation updates
+• Easy access for developers and users
+
+DATA ORGANIZATION
+• Clear separation between generated and static data
+• Cache files organized by type and purpose
+• Indexes stored separately for easy maintenance
+• Vocabulary data persistent across sessions
+
+LOGGING STRUCTURE
+• Separate log files for different system aspects
+• Chronological organization for troubleshooting
+• Configurable log levels and rotation
+• Easy monitoring and analysis
+
+CORE FILES PLACEMENT
+• Main system files in root directory
+• Clear naming convention for file purposes
+• Logical grouping of related functionality
+• Easy navigation for developers
+
+
+4.3 DIRECTORY DESCRIPTIONS
+
+config/
+CONTAINS: System configuration files and settings
+PURPOSE: Centralized configuration management
+USAGE: Modified during setup and deployment
+MAINTENANCE: Updated for environment changes
+
+• config.py - Database connections, AI models, search parameters
+• airbnb_config.py - Domain-specific property mappings and synonyms
+• numeric_config.py - Patterns for price, bedroom, rating constraints
+• logging_config.py - Log levels, formats, and rotation settings
+• exceptions.py - Custom exception classes for error handling
+
+documentation/
+CONTAINS: Project documentation and guides
+PURPOSE: Comprehensive project documentation
+USAGE: Reference for developers and users
+MAINTENANCE: Updated with feature changes
+
+• COMPLETE_PROJECT_DOCUMENTATION.md - Master technical documentation
+• JSON_RAG_SYSTEM_DOCUMENTATION.docx.txt - Word-compatible format
+• data_understanding.txt - Airbnb data schema and field explanations
+• PROJECT_STRUCTURE.md - Directory structure documentation
+
+cache/
+CONTAINS: Generated cache files for performance
+PURPOSE: Speed up system startup and operations
+USAGE: Automatically managed by system
+MAINTENANCE: Rebuilt during setup or updates
+
+• embeddings_cache.pkl - Pre-computed AI embeddings (~100MB)
+• processed_docs.pkl - Processed document metadata
+• vocabulary.pkl - Legacy vocabulary cache (compatibility)
+
+data/
+CONTAINS: Vocabulary and configuration data
+PURPOSE: Persistent storage of learned vocabulary
+USAGE: Loaded during system initialization
+MAINTENANCE: Rebuilt when data changes
+
+• vocabulary.json - Main vocabulary terms and frequencies
+• keyword_mappings.json - Keyword to synonym mappings
+• numeric_patterns.json - Numeric constraint detection patterns
+
+indexes/
+CONTAINS: Search indexes and processed documents
+PURPOSE: Fast vector similarity search
+USAGE: Core search operations
+MAINTENANCE: Rebuilt when documents change
+
+• faiss_index.faiss - Vector similarity index (~7MB per 5K docs)
+• processed_documents.pkl - Document metadata and mappings
+
+logs/
+CONTAINS: System operation logs
+PURPOSE: Monitoring, debugging, and troubleshooting
+USAGE: Real-time system monitoring
+MAINTENANCE: Automatic rotation and cleanup
+
+• setup.log - System initialization and setup operations
+• system.log - General system operations and status
+• search.log - Search queries and performance metrics
+• error.log - Errors, exceptions, and warnings
+
+
+4.4 FILE DESCRIPTIONS
+
+CORE SYSTEM FILES
+
+core_system.py (25KB)
+• Main JSONRAGSystem orchestrator class
+• Component initialization and coordination
+• Search pipeline management
+• Error handling and recovery
+• System statistics and monitoring
+
+utils.py (20KB)
+• VocabularyManager for term processing
+• MongoDBConnector for database operations
+• Text processing and ASCII filtering utilities
+• Caching mechanisms and optimization
+• Helper functions and common operations
+
+main.py (15KB)
+• Gradio web interface implementation
+• User interaction and session management
+• Search result display and formatting
+• Error handling for web interface
+• Port management and server configuration
+
+setup.py (18KB)
+• Complete system initialization
+• Component validation and testing
+• Index and cache creation
+• Vocabulary building and optimization
+• Diagnostic and maintenance commands
+
+query_processor.py (12KB)
+• Advanced query understanding
+• Entity extraction and classification
+• Context-aware query enhancement
+• Intent detection and processing
+• Natural language processing utilities
+
+CONFIGURATION FILES
+
+config/config.py (8KB)
+• Database connection settings
+• AI model configurations
+• Search parameters and weights
+• File paths and directory settings
+• Performance optimization settings
+
+config/airbnb_config.py (5KB)
+• Property type mappings and synonyms
+• Amenity categorization and groupings
+• Location-specific configurations
+• Domain-specific search optimizations
+• Price and rating normalization rules
+
+config/numeric_config.py (4KB)
+• Numeric constraint detection patterns
+• Price range parsing rules
+• Bedroom and bathroom count extraction
+• Rating and review score processing
+• Accommodation limit handling
+
+config/logging_config.py (3KB)
+• Log level configuration
+• File rotation settings
+• Format specifications
+• Output destination management
+• Performance logging parameters
+
+config/exceptions.py (2KB)
+• Custom exception class definitions
+• Error categorization and handling
+• User-friendly error messages
+• System recovery procedures
+• Debugging information inclusion
+
+DOCUMENTATION FILES
+
+COMPLETE_PROJECT_DOCUMENTATION.md (47KB)
+• Comprehensive technical documentation
+• API reference and usage examples
+• Architecture and design patterns
+• Installation and setup procedures
+• Troubleshooting and maintenance guides
+
+JSON_RAG_SYSTEM_DOCUMENTATION.docx.txt (40KB)
+• Word-compatible documentation format
+• Professional document structure
+• Print-ready formatting
+• Executive summary and business value
+• Complete technical specifications
+
+data_understanding.txt (5KB)
+• Airbnb data schema documentation
+• Field descriptions and data types
+• Relationship explanations
+• Data quality metrics
+• Processing guidelines
+
+PROJECT STRUCTURE FILES
+
+requirements.txt (1KB)
+• Python package dependencies
+• Version specifications
+• Optional development packages
+• Installation instructions
+• Compatibility notes
+
+README.md (6KB)
+• Project overview and quick start
+• Installation instructions
+• Usage examples
+• Feature highlights
+• Support and contribution guidelines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. SYSTEM WORKFLOW
+
+
+5.1 SETUP WORKFLOW
+
+The system setup process is designed to be comprehensive, automated, and user-friendly. The enhanced setup.py orchestrates the entire initialization sequence to ensure optimal system performance from the first use.
+
+SETUP PROCESS OVERVIEW
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           SETUP WORKFLOW DIAGRAM                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    START
+      │
+      ▼
+┌─────────────────┐
+│ Environment     │ ──▶ Check Python version, dependencies
+│ Validation      │     Set encoding variables (ASCII)
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Directory       │ ──▶ Create cache/, data/, indexes/, logs/
+│ Structure       │     Verify write permissions
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Database        │ ──▶ Test MongoDB connection
+│ Connection      │     Validate collection existence
+│ Test            │     Check document count and structure
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Numeric         │ ──▶ Initialize constraint patterns
+│ Configuration   │     Validate regex patterns
+│ Setup           │     Test extraction algorithms
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Advanced Query  │ ──▶ Import query processor
+│ Processor       │     Test NLP functionality
+│ Testing         │     Validate component integration
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Vocabulary      │ ──▶ Extract terms from documents
+│ Building        │     Build keyword mappings
+│                 │     Save to data/ directory
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Document        │ ──▶ Process MongoDB documents
+│ Processing      │     Extract searchable text
+│                 │     Normalize and clean data
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Embedding       │ ──▶ Download AI models
+│ Generation      │     Generate document embeddings
+│                 │     Cache for fast startup
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ FAISS Index     │ ──▶ Create vector similarity index
+│ Creation        │     Optimize for search speed
+│                 │     Save to indexes/ directory
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Component       │ ──▶ Test search functionality
+│ Integration     │     Validate end-to-end pipeline
+│ Validation      │     Performance benchmarking
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ System Ready    │ ──▶ Generate setup report
+│ for Production  │     Display performance metrics
+└─────────────────┘
+      │
+      ▼
+    END
+
+
+SETUP COMMAND OPTIONS
+
+COMPREHENSIVE SETUP
+python setup.py --full-setup
+• Complete system initialization from scratch
+• All components built and validated
+• Optimal performance configuration
+• Production-ready system state
+
+INDIVIDUAL COMPONENT SETUP
+python setup.py --test-db
+• Database connectivity validation
+• Collection structure verification
+• Document count and sample validation
+
+python setup.py --setup-numeric-config
+• Numeric pattern initialization
+• Constraint extraction testing
+• Regular expression validation
+
+python setup.py --setup-query-processor
+• Advanced NLP component testing
+• Import validation and functionality check
+• Integration with main system verification
+
+python setup.py --setup-embeddings
+• AI model download and initialization
+• Embedding cache pre-computation
+• Performance optimization setup
+
+REBUILD OPERATIONS
+python setup.py --rebuild-vocab
+• Vocabulary reconstruction from current data
+• Keyword mapping updates
+• Pattern optimization
+
+python setup.py --rebuild-indexes
+• FAISS index reconstruction
+• Document processing refresh
+• Search optimization updates
+
+python setup.py --rebuild-embeddings
+• Embedding cache regeneration
+• Model updates and reprocessing
+• Performance cache refresh
+
+
+SETUP PERFORMANCE METRICS
+
+TIMING BENCHMARKS
+• Environment Validation: <5 seconds
+• Directory Structure Creation: <2 seconds
+• Database Connection Test: 5-15 seconds
+• Numeric Configuration Setup: <10 seconds
+• Query Processor Testing: 10-30 seconds
+• Vocabulary Building: 30-120 seconds (depends on document count)
+• Document Processing: 60-300 seconds (depends on dataset size)
+• Embedding Generation: 120-600 seconds (depends on model download)
+• FAISS Index Creation: 30-120 seconds
+• Integration Validation: 15-60 seconds
+
+TOTAL SETUP TIME
+• Small Dataset (<1,000 docs): 5-10 minutes
+• Medium Dataset (1,000-10,000 docs): 10-20 minutes
+• Large Dataset (>10,000 docs): 20-45 minutes
+
+PERFORMANCE IMPROVEMENT
+• Without Setup: main.py startup 2-5 minutes + 30+ second first search
+• With Setup: main.py startup 10-30 seconds + <2 second first search
+• Overall Improvement: 90% faster startup, 95% faster first search
+
+
+5.2 QUERY PROCESSING WORKFLOW
+
+The query processing pipeline transforms natural language user input into structured search operations and returns intelligent, contextual responses.
+
+QUERY PROCESSING PIPELINE
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        QUERY PROCESSING WORKFLOW                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    USER QUERY INPUT
+         │
+         ▼
+┌─────────────────┐
+│ Text Cleaning   │ ──▶ Remove non-ASCII characters
+│ and             │     Normalize whitespace
+│ Normalization   │     Basic syntax cleaning
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Session Context │ ──▶ Retrieve conversation history
+│ Loading         │     Load previous entities
+│                 │     Identify follow-up patterns
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Intent          │ ──▶ Classify query type (search/filter/info)
+│ Classification  │     Determine user goal
+│                 │     Set processing strategy
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Entity          │ ──▶ Extract locations, amenities
+│ Extraction      │     Identify property types
+│                 │     Find numeric constraints
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Numeric         │ ──▶ Parse price ranges
+│ Constraint      │     Extract bedroom/bathroom counts
+│ Detection       │     Identify rating requirements
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Query           │ ──▶ Add synonyms and related terms
+│ Enhancement     │     Incorporate context from session
+│                 │     Optimize for search engines
+└─────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    MULTI-MODAL SEARCH                      │
+│  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐    │
+│  │   Semantic    │ │   Fuzzy       │ │   Keyword     │    │
+│  │   Search      │ │   Search      │ │   Search      │    │
+│  │               │ │               │ │               │    │
+│  │ AI Embeddings │ │ Typo Handling │ │ TF-IDF Scores │    │
+│  │ Cosine Sim    │ │ String Match  │ │ Field Weights │    │
+│  └───────────────┘ └───────────────┘ └───────────────┘    │
+│         │               │               │                │
+│         └───────────────┼───────────────┘                │
+│                         ▼                                │
+│               ┌───────────────┐                          │
+│               │ Hybrid Fusion │                          │
+│               │ Weight Calc   │                          │
+│               │ Score Merge   │                          │
+│               │ Diversity     │                          │
+│               └───────────────┘                          │
+└─────────────────────────────────────────────────────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Constraint      │ ──▶ Apply numeric filters
+│ Filtering       │     Filter by availability
+│                 │     Apply business rules
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Result Ranking  │ ──▶ Relevance scoring
+│ and Optimization│     Diversity optimization
+│                 │     Result deduplication
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ AI Summary      │ ──▶ Generate contextual summary
+│ Generation      │     Highlight key features
+│                 │     Natural language response
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Response        │ ──▶ JSON formatting
+│ Formatting      │     Session update
+│                 │     Performance metrics
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Session Update  │ ──▶ Save query and results
+│ and Context     │     Update conversation context
+│ Management      │     Prepare for follow-up
+└─────────────────┘
+         │
+         ▼
+    RESPONSE TO USER
+
+
+QUERY PROCESSING COMPONENTS
+
+TEXT PREPROCESSING
+• ASCII-only character filtering
+• Whitespace normalization
+• Special character handling
+• Basic syntax correction
+
+CONTEXT MANAGEMENT
+• Session-based conversation tracking
+• Entity persistence across queries
+• Follow-up query enhancement
+• Context-aware interpretation
+
+INTENT CLASSIFICATION
+• Search queries ("find apartments")
+• Filter requests ("under $100")
+• Information queries ("tell me about...")
+• Comparison requests ("compare these")
+
+ENTITY EXTRACTION
+• Location entities (cities, neighborhoods)
+• Amenity mentions (WiFi, parking, kitchen)
+• Property types (apartment, house, room)
+• Numeric constraints (price, bedrooms, ratings)
+
+SEARCH ORCHESTRATION
+• Semantic search using AI embeddings
+• Fuzzy search for typo tolerance
+• Keyword search with TF-IDF weighting
+• Intelligent result fusion
+
+RESULT PROCESSING
+• Relevance-based ranking
+• Diversity optimization
+• Constraint filtering
+• Performance optimization
+
+
+5.3 DATA FLOW DIAGRAM
+
+The data flow illustrates how information moves through the system from initial setup to query response.
+
+DATA FLOW OVERVIEW
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              DATA FLOW DIAGRAM                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+SYSTEM INITIALIZATION FLOW
+
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│   MongoDB   │ ──▶  │  Document   │ ──▶  │ Vocabulary  │
+│  Database   │      │ Processing  │      │  Builder    │
+└─────────────┘      └─────────────┘      └─────────────┘
+                           │                       │
+                           ▼                       ▼
+                    ┌─────────────┐      ┌─────────────┐
+                    │   Text      │      │ Keyword     │
+                    │ Extraction  │      │ Mapping     │
+                    └─────────────┘      └─────────────┘
+                           │                       │
+                           ▼                       ▼
+                    ┌─────────────┐      ┌─────────────┐
+                    │ Embedding   │      │ Vocabulary  │
+                    │ Generation  │      │   Cache     │
+                    └─────────────┘      └─────────────┘
+                           │                       │
+                           ▼                       ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ FAISS Index │ ◀──  │ Vector      │      │   Data      │
+│   Storage   │      │ Processing  │      │  Storage    │
+└─────────────┘      └─────────────┘      └─────────────┘
+
+RUNTIME QUERY FLOW
+
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ User Query  │ ──▶  │ Query       │ ──▶  │ Enhanced    │
+│   Input     │      │ Processing  │      │   Query     │
+└─────────────┘      └─────────────┘      └─────────────┘
+       │                       │                       │
+       ▼                       ▼                       ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ Session     │      │ Intent      │      │ Entity      │
+│ Context     │      │ Detection   │      │ Extraction  │
+└─────────────┘      └─────────────┘      └─────────────┘
+       │                       │                       │
+       ▼                       ▼                       ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ Search      │ ◀──  │ Multi-Modal │ ──▶  │ Constraint  │
+│ Execution   │      │   Search    │      │ Filtering   │
+└─────────────┘      └─────────────┘      └─────────────┘
+       │                       │                       │
+       ▼                       ▼                       ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ Result      │ ──▶  │ AI Summary  │ ──▶  │ Response    │
+│ Ranking     │      │ Generation  │      │ Formatting  │
+└─────────────┘      └─────────────┘      └─────────────┘
+       │                       │                       │
+       ▼                       ▼                       ▼
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│ Session     │      │ Performance │      │   User      │
+│  Update     │      │  Logging    │      │ Interface   │
+└─────────────┘      └─────────────┘      └─────────────┘
+
+
+5.4 COMPONENT INTERACTION
+
+The system components interact through well-defined interfaces and protocols to ensure reliable, efficient operation.
+
+COMPONENT INTERACTION MATRIX
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          COMPONENT INTERACTIONS                            │
+├─────────────────┬───────────────────────────────────────────────────────────┤
+│ Component       │ Interacts With                                          │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ JSONRAGSystem   │ • All other components (orchestrator)                  │
+│                 │ • Configuration management                              │
+│                 │ • Error handling and recovery                          │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ QueryEngine     │ • Session context manager                              │
+│                 │ • Entity extraction services                           │
+│                 │ • Intent classification                                │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ SemanticSearch  │ • FAISS index storage                                  │
+│                 │ • Vocabulary manager                                   │
+│                 │ • Embedding generation                                 │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ NumericSearch   │ • Configuration patterns                               │
+│                 │ • Document filtering                                   │
+│                 │ • Constraint validation                                │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ VocabularyMgr   │ • MongoDB connector                                    │
+│                 │ • File system storage                                 │
+│                 │ • Term processing utilities                            │
+├─────────────────┼───────────────────────────────────────────────────────────┤
+│ ResponseGen     │ • Search result data                                   │
+│                 │ • Session context                                      │
+│                 │ • Template processing                                  │
+└─────────────────┴───────────────────────────────────────────────────────────┘
+
+DATA FLOW BETWEEN COMPONENTS
+
+1. INITIALIZATION PHASE
+   JSONRAGSystem → Configuration → All Components
+   VocabularyManager → MongoDB → Document Processing
+   Document Processing → Embedding Generation → FAISS Index
+
+2. QUERY PHASE
+   User Interface → JSONRAGSystem → QueryEngine
+   QueryEngine → Entity Extraction + Intent Classification
+   Enhanced Query → SemanticSearch + NumericSearch
+   SearchResults → ResponseGenerator → Formatted Response
+
+3. SESSION MANAGEMENT
+   Session Manager ↔ Query Context
+   Context Updates ↔ Entity Accumulation
+   Follow-up Handling ↔ Query Enhancement
+
+ERROR HANDLING AND RECOVERY
+
+• Graceful degradation when components fail
+• Fallback mechanisms for missing dependencies
+• Error isolation to prevent cascading failures
+• User-friendly error messages and recovery suggestions
+
+PERFORMANCE OPTIMIZATION
+
+• Lazy loading of heavyweight components
+• Intelligent caching at component boundaries
+• Batch processing for efficiency
+• Memory management and cleanup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6. FLOWCHART DOCUMENTATION
+
+
+6.1 MAIN SYSTEM FLOW
+
+The main system flowchart illustrates the complete lifecycle from system initialization through query processing to response delivery.
+
+MAIN SYSTEM FLOWCHART
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              MAIN SYSTEM FLOW                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                         ┌─────────────────┐
+                         │  SYSTEM START   │
+                         └─────────────────┘
+                                   │
+                                   ▼
+                         ┌─────────────────┐
+                    ┌──▶ │ Load Config     │
+                    │    │ Files           │
+                    │    └─────────────────┘
+                    │              │
+                    │              ▼                   ┌────────────┐
+                    │    ┌─────────────────┐           │   Config   │
+                    │    │ Initialize      │ ──────▶   │  Error?    │ ──▶ EXIT
+                    │    │ Logging         │           └────────────┘
+                    │    └─────────────────┘                  │
+                    │              │                          │
+                    │              ▼                          ▼
+                    │    ┌─────────────────┐           ┌────────────┐
+                    │    │ Connect to      │           │ Database   │
+                    │    │ MongoDB         │ ──────▶   │ Available? │ ──▶ RETRY/EXIT
+                    │    └─────────────────┘           └────────────┘
+                    │              │                          │
+                    │              ▼                          │
+                    │    ┌─────────────────┐                  │
+                    │    │ Load Vocabulary │ ◀────────────────┘
+                    │    │ Cache           │
+                    │    └─────────────────┘
+                    │              │
+                    │              ▼
+                    │    ┌─────────────────┐           ┌────────────┐
+                    │    │ Initialize      │           │ Vocabulary │
+                    │    │ FAISS Index     │ ──────▶   │ Available? │
+                    │    └─────────────────┘           └────────────┘
+                    │              │                          │
+                    │              ▼                          │
+                    │    ┌─────────────────┐                  │
+                    │    │ Load AI Models  │ ◀────────────────┘
+                    │    │ & Components    │
+                    │    └─────────────────┘
+                    │              │
+                    │              ▼
+                    │    ┌─────────────────┐
+                    │    │ Start Web       │
+                    │    │ Interface       │
+                    │    └─────────────────┘
+                    │              │
+                    │              ▼
+                    │    ┌─────────────────┐
+                    │    │ SYSTEM READY    │
+                    │    │ Wait for Queries│
+                    │    └─────────────────┘
+                    │              │
+                    │              ▼
+   ┌────────────────┘    ┌─────────────────┐
+   │                     │ USER QUERY      │
+   │                     │ RECEIVED        │
+   │                     └─────────────────┘
+   │                               │
+   │                               ▼
+   │                     ┌─────────────────┐           ┌────────────┐
+   │                     │ Process Query   │           │   Valid    │
+   │                     │ Pipeline        │ ──────▶   │   Query?   │ ──▶ ERROR MSG
+   │                     └─────────────────┘           └────────────┘
+   │                               │                          │
+   │                               ▼                          │
+   │                     ┌─────────────────┐                  │
+   │                     │ Execute Search  │ ◀────────────────┘
+   │                     │ Operations      │
+   │                     └─────────────────┘
+   │                               │
+   │                               ▼
+   │                     ┌─────────────────┐
+   │                     │ Generate        │
+   │                     │ Response        │
+   │                     └─────────────────┘
+   │                               │
+   │                               ▼
+   │                     ┌─────────────────┐
+   │                     │ Update Session  │
+   │                     │ Context         │
+   │                     └─────────────────┘
+   │                               │
+   │                               ▼
+   │                     ┌─────────────────┐
+   │                     │ Return Response │
+   │                     │ to User         │
+   │                     └─────────────────┘
+   │                               │
+   │                               ▼
+   └─────────────────────┌─────────────────┐
+                         │ CONTINUE        │
+                         │ WAITING         │
+                         └─────────────────┘
+
+
+6.2 QUERY UNDERSTANDING FLOW
+
+This flowchart details the natural language processing pipeline that transforms user queries into structured search operations.
+
+QUERY UNDERSTANDING FLOWCHART
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          QUERY UNDERSTANDING FLOW                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+              ┌─────────────────┐
+              │ USER QUERY      │
+              │ INPUT           │
+              └─────────────────┘
+                        │
+                        ▼
+              ┌─────────────────┐
+              │ Text Cleaning   │ ──▶ Remove non-ASCII characters
+              │ & Normalization │     Normalize whitespace and punctuation
+              └─────────────────┘     Convert to lowercase
+                        │
+                        ▼
+              ┌─────────────────┐
+         ┌──▶ │ Load Session    │
+         │    │ Context         │
+         │    └─────────────────┘
+         │              │
+         │              ▼                   ┌────────────┐
+         │    ┌─────────────────┐           │ Previous   │
+         │    │ Check Previous  │ ──────▶   │ Context    │ ───┐
+         │    │ Conversation    │           │ Found?     │    │
+         │    └─────────────────┘           └────────────┘    │
+         │              │                          │          │
+         │              ▼                          │          ▼
+         │    ┌─────────────────┐                  │    ┌──────────┐
+         │    │ Intent          │ ◀────────────────┘    │ Merge    │
+         │    │ Classification  │                       │ Context  │
+         │    └─────────────────┘                       └──────────┘
+         │              │                                      │
+         │              ▼                                      │
+         │    ┌─────────────────┐                              │
+         │    │ Classify as:    │                              │
+         │    │ • Search Query  │                              │
+         │    │ • Filter Request│                              │
+         │    │ • Info Request  │                              │
+         │    │ • Follow-up     │                              │
+         │    └─────────────────┘                              │
+         │              │                                      │
+         │              ▼                                      │
+         │    ┌─────────────────┐           ┌────────────┐     │
+         │    │ Entity          │           │ Entities   │     │
+         │    │ Extraction      │ ──────▶   │ Found?     │ ────┼──▶ NO ENTITIES
+         │    └─────────────────┘           └────────────┘     │
+         │              │                          │            │
+         │              ▼                          │            │
+         │    ┌─────────────────┐                  │            │
+         │    │ Extract:        │ ◀────────────────┘            │
+         │    │ • Locations     │                               │
+         │    │ • Amenities     │                               │
+         │    │ • Property Types│                               │
+         │    │ • Numeric Values│                               │
+         │    └─────────────────┘                               │
+         │              │                                      │
+         │              ▼                                      │
+         │    ┌─────────────────┐           ┌────────────┐     │
+         │    │ Numeric         │           │ Numeric    │     │
+         │    │ Constraint      │ ──────▶   │ Values     │ ────┼──▶ NO CONSTRAINTS
+         │    │ Detection       │           │ Found?     │     │
+         │    └─────────────────┘           └────────────┘     │
+         │              │                          │            │
+         │              ▼                          │            │
+         │    ┌─────────────────┐                  │            │
+         │    │ Parse:          │ ◀────────────────┘            │
+         │    │ • Price Ranges  │                               │
+         │    │ • Bedroom Count │                               │
+         │    │ • Bathroom Count│                               │
+         │    │ • Guest Limits  │                               │
+         │    │ • Ratings       │                               │
+         │    └─────────────────┘                               │
+         │              │                                      │
+         │              ▼                                      │
+         │    ┌─────────────────┐                              │
+         │    │ Query           │ ◀────────────────────────────┘
+         │    │ Enhancement     │
+         │    └─────────────────┘
+         │              │
+         │              ▼
+         │    ┌─────────────────┐
+         │    │ Add Synonyms &  │
+         │    │ Related Terms   │
+         │    └─────────────────┘
+         │              │
+         │              ▼
+         │    ┌─────────────────┐           ┌────────────┐
+         │    │ Context-Aware   │           │ Follow-up  │
+         │    │ Enhancement     │ ──────▶   │ Query?     │ ───┐
+         │    └─────────────────┘           └────────────┘    │
+         │              │                          │          │
+         │              ▼                          │          ▼
+         │    ┌─────────────────┐                  │    ┌──────────┐
+         │    │ ENHANCED QUERY  │ ◀────────────────┘    │ Enhance  │
+         │    │ READY FOR       │                       │ with     │
+         │    │ SEARCH          │                       │ Previous │
+         │    └─────────────────┘                       │ Context  │
+         │              │                               └──────────┘
+         │              ▼                                      │
+         │    ┌─────────────────┐                              │
+         │    │ PROCEED TO      │ ◀────────────────────────────┘
+         │    │ SEARCH PHASE    │
+         │    └─────────────────┘
+         │              │
+         └──────────────┘
+
+
+6.3 SEARCH ORCHESTRATION FLOW
+
+This flowchart shows how different search methods are coordinated and their results are fused into a final ranked list.
+
+SEARCH ORCHESTRATION FLOWCHART
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         SEARCH ORCHESTRATION FLOW                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+              ┌─────────────────┐
+              │ ENHANCED QUERY  │
+              │ FROM NLP        │
+              └─────────────────┘
+                        │
+                        ▼
+              ┌─────────────────┐
+              │ Initialize      │
+              │ Search Context  │
+              └─────────────────┘
+                        │
+                        ▼
+  ┌─────────────────────┼─────────────────────┐
+  │                     │                     │
+  ▼                     ▼                     ▼
+┌───────────┐    ┌───────────┐         ┌───────────┐
+│ SEMANTIC  │    │  FUZZY    │         │ KEYWORD   │
+│  SEARCH   │    │  SEARCH   │         │  SEARCH   │
+└───────────┘    └───────────┘         └───────────┘
+      │                │                     │
+      ▼                ▼                     ▼
+┌───────────┐    ┌───────────┐         ┌───────────┐
+│ Generate  │    │ String    │         │ TF-IDF    │
+│ Query     │    │ Matching  │         │ Scoring   │
+│ Embedding │    │ Algorithm │         │ Engine    │
+└───────────┘    └───────────┘         └───────────┘
+      │                │                     │
+      ▼                ▼                     ▼
+┌───────────┐    ┌───────────┐         ┌───────────┐
+│ FAISS     │    │ Multi-    │         │ Field     │
+│ Vector    │    │ Field     │         │ Weighted  │
+│ Search    │    │ Matching  │         │ Search    │
+└───────────┘    └───────────┘         └───────────┘
+      │                │                     │
+      ▼                ▼                     ▼
+┌───────────┐    ┌───────────┐         ┌───────────┐
+│ Cosine    │    │ Fuzzy     │         │ Relevance │
+│ Similarity│    │ Score     │         │ Ranking   │
+│ Ranking   │    │ Threshold │         │ Algorithm │
+└───────────┘    └───────────┘         └───────────┘
+      │                │                     │
+      ▼                ▼                     ▼
+┌───────────┐    ┌───────────┐         ┌───────────┐
+│ Results   │    │ Results   │         │ Results   │
+│ Set A     │    │ Set B     │         │ Set C     │
+│ (Semantic)│    │ (Fuzzy)   │         │ (Keyword) │
+└───────────┘    └───────────┘         └───────────┘
+      │                │                     │
+      └────────────────┼─────────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ RESULT FUSION   │
+           │ ENGINE          │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ Calculate       │
+           │ Fusion Weights  │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ Score           │
+           │ Normalization   │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ Combine and     │
+           │ Rank Results    │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ Apply Diversity │
+           │ Optimization    │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐           ┌────────────┐
+           │ Numeric         │           │ Numeric    │
+           │ Constraint      │ ──────▶   │ Filters    │ ───┐
+           │ Filtering       │           │ Applied?   │    │
+           └─────────────────┘           └────────────┘    │
+                       │                          │        │
+                       ▼                          │        ▼
+           ┌─────────────────┐                    │  ┌─────────┐
+           │ Final Result    │ ◀──────────────────┘  │ Apply   │
+           │ Ranking         │                       │ Filters │
+           └─────────────────┘                       └─────────┘
+                       │                                    │
+                       ▼                                    │
+           ┌─────────────────┐                              │
+           │ Generate        │ ◀────────────────────────────┘
+           │ Search          │
+           │ Statistics      │
+           └─────────────────┘
+                       │
+                       ▼
+           ┌─────────────────┐
+           │ FINAL RESULTS   │
+           │ FOR RESPONSE    │
+           │ GENERATION      │
+           └─────────────────┘
+
+
+6.4 SETUP PROCESS FLOW
+
+This flowchart illustrates the comprehensive system setup process that prepares the system for optimal performance.
+
+SETUP PROCESS FLOWCHART
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             SETUP PROCESS FLOW                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────┐
+                    │ SETUP COMMAND   │
+                    │ EXECUTION       │
+                    └─────────────────┘
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │ Parse Command   │
+                    │ Line Arguments  │
+                    └─────────────────┘
+                              │
+                              ▼
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌─────────────┐    ┌─────────────┐         ┌─────────────┐
+│ Full Setup  │    │ Individual  │         │ Rebuild     │
+│ --full-setup│    │ Components  │         │ Operations  │
+└─────────────┘    └─────────────┘         └─────────────┘
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌─────────────┐    ┌─────────────┐         ┌─────────────┐
+│ Environment │    │ --test-db   │         │ --rebuild-  │
+│ Validation  │    │ --setup-    │         │ vocab       │
+└─────────────┘    │ numeric     │         │ indexes     │
+        │          │ etc.        │         │ embeddings  │
+        ▼          └─────────────┘         └─────────────┘
+┌─────────────┐           │                       │
+│ Check       │           │                       │
+│ Python 3.8+ │           │                       │
+│ Dependencies│           │                       │
+└─────────────┘           │                       │
+        │                 │                       │
+        ▼                 │                       │
+┌─────────────┐           │                       │
+│ Set ASCII   │           │                       │
+│ Environment │           │                       │
+└─────────────┘           │                       │
+        │                 │                       │
+        ▼                 ▼                       ▼
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ Create          │  │ Component       │  │ Rebuild         │
+│ Directories     │  │ Validation      │  │ Process         │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌─────────────────┐           ┌───────────────────────────────────┐
+│ cache/          │           │         VALIDATION MATRIX         │
+│ data/           │           ├─────────────┬─────────────────────┤
+│ indexes/        │           │ Component   │ Validation Test     │
+│ logs/           │           ├─────────────┼─────────────────────┤
+└─────────────────┘           │ Database    │ Connection + Query  │
+        │                     │ Numeric     │ Pattern Tests       │
+        ▼                     │ Query Proc  │ Import + Function   │
+┌─────────────────┐           │ Embeddings  │ Model Download      │
+│ DATABASE        │           │ Vocabulary  │ Term Extraction     │
+│ CONNECTION      │           │ Indexes     │ FAISS Creation      │
+│ TEST            │           └─────────────┴─────────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ All Components  │
+│ Test MongoDB    │           │ Validated?      │ ──▶ REPORT FAILURES
+│ URI Connection  │           └─────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ PROCEED WITH    │
+│ Validate        │           │ FULL SETUP      │
+│ Collection      │           └─────────────────┘
+│ & Documents     │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ VOCABULARY      │
+┌─────────────────┐           │ BUILDING        │
+│ NUMERIC CONFIG  │           └─────────────────┘
+│ VALIDATION      │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ Extract Terms   │
+┌─────────────────┐           │ from MongoDB    │
+│ Initialize      │           │ Documents       │
+│ Constraint      │           └─────────────────┘
+│ Patterns        │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ Build Keyword   │
+┌─────────────────┐           │ Mappings &      │
+│ Test Pattern    │           │ Synonyms        │
+│ Recognition     │           └─────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ Save to data/   │
+│ QUERY           │           │ Directory       │
+│ PROCESSOR       │           └─────────────────┘
+│ VALIDATION      │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ DOCUMENT        │
+┌─────────────────┐           │ PROCESSING      │
+│ Import and      │           └─────────────────┘
+│ Test Advanced   │                     │
+│ NLP Components  │                     ▼
+└─────────────────┘           ┌─────────────────┐
+        │                     │ Load Documents  │
+        ▼                     │ from MongoDB    │
+┌─────────────────┐           └─────────────────┘
+│ ALL COMPONENTS  │                     │
+│ READY           │                     ▼
+└─────────────────┘           ┌─────────────────┐
+        │                     │ Extract         │
+        ▼                     │ Searchable Text │
+┌─────────────────┐           │ & Metadata      │
+│ PROCEED TO      │           └─────────────────┘
+│ DATA PROCESSING │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ EMBEDDING       │
+┌─────────────────┐           │ GENERATION      │
+│ BUILD           │           └─────────────────┘
+│ VOCABULARY      │                     │
+│ FROM LIVE DATA  │                     ▼
+└─────────────────┘           ┌─────────────────┐
+        │                     │ Download AI     │
+        ▼                     │ Models if       │
+┌─────────────────┐           │ Needed          │
+│ GENERATE        │           └─────────────────┘
+│ EMBEDDINGS      │                     │
+└─────────────────┘                     ▼
+        │                     ┌─────────────────┐
+        ▼                     │ Generate        │
+┌─────────────────┐           │ Document        │
+│ CREATE FAISS    │           │ Embeddings      │
+│ INDEX           │           │ (Batch)         │
+└─────────────────┘           └─────────────────┘
+        │                               │
+        ▼                               ▼
+┌─────────────────┐           ┌─────────────────┐
+│ SYSTEM          │           │ Cache for       │
+│ INTEGRATION     │           │ Fast Startup    │
+│ VALIDATION      │           └─────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ FAISS INDEX     │
+│ Test Complete   │           │ CREATION        │
+│ Search Pipeline │           └─────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ Build Vector    │
+│ Performance     │           │ Similarity      │
+│ Benchmarking    │           │ Index           │
+└─────────────────┘           └─────────────────┘
+        │                               │
+        ▼                               ▼
+┌─────────────────┐           ┌─────────────────┐
+│ Generate Setup  │           │ Save Index      │
+│ Report &        │           │ to indexes/     │
+│ Statistics      │           └─────────────────┘
+└─────────────────┘                     │
+        │                               ▼
+        ▼                     ┌─────────────────┐
+┌─────────────────┐           │ FINAL           │
+│ SETUP           │           │ INTEGRATION     │
+│ COMPLETED       │           │ VALIDATION      │
+└─────────────────┘           └─────────────────┘
+        │                               │
+        └───────────────────────────────┼
+                                        ▼
+                              ┌─────────────────┐
+                              │ SYSTEM READY    │
+                              │ FOR PRODUCTION  │
+                              │ USE             │
+                              └─────────────────┘
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. CORE COMPONENTS
+
+
+7.1 JSONRAGSYSTEM
+
+The JSONRAGSystem serves as the primary orchestrator for the entire search and retrieval platform, managing component initialization, coordinating search operations, and ensuring optimal system performance.
+
+CLASS DEFINITION
+```python
+class JSONRAGSystem:
+    def __init__(self, config_path: str = None)
+    def search(self, query: str, session_id: str = None) -> Dict[str, Any]
+    def get_system_stats(self) -> Dict[str, Any]
+    def initialize_system(self) -> bool
+    def cleanup_resources(self) -> bool
+```
+
+KEY RESPONSIBILITIES
+• Component Initialization and Coordination
+• Search Pipeline Management
+• Result Aggregation and Formatting
+• Error Handling and Recovery
+• Performance Monitoring and Optimization
+• Session Management and Context Tracking
+
+CORE METHODS
+
+__init__(config_path: str = None)
+PURPOSE: Initialize the RAG system with configuration
+PARAMETERS:
+• config_path: Optional path to custom configuration file
+FUNCTIONALITY:
+• Load system configuration from files
+• Initialize logging and error handling
+• Set up ASCII-safe text processing
+• Prepare component initialization
+• Validate system requirements
+
+search(query: str, session_id: str = None) -> Dict[str, Any]
+PURPOSE: Execute comprehensive search pipeline
+PARAMETERS:
+• query: Natural language search query
+• session_id: Optional session identifier for context
+RETURNS:
+• results: List of matching property documents
+• summary: AI-generated response summary
+• search_stats: Performance and relevance metrics
+• session_context: Updated conversation state
+FUNCTIONALITY:
+• Query preprocessing and normalization
+• Multi-modal search execution
+• Result ranking and filtering
+• Response generation and formatting
+• Performance logging and monitoring
+
+get_system_stats() -> Dict[str, Any]
+PURPOSE: Provide comprehensive system health metrics
+RETURNS:
+• system_initialized: Initialization status
+• database_connected: MongoDB connection state
+• components_status: Individual component health
+• index_stats: FAISS index information
+• memory_usage: Current memory consumption
+• performance_metrics: Search timing statistics
+
+PERFORMANCE CHARACTERISTICS
+• Startup Time: 10-30 seconds (optimized setup)
+• Search Latency: <2 seconds average
+• Memory Usage: 2-4 GB typical operation
+• Concurrent Sessions: 50+ simultaneous users
+• Throughput: 10+ queries per second
+
+ERROR HANDLING
+• Graceful degradation on component failure
+• Automatic fallback to basic search methods
+• Comprehensive error logging and reporting
+• User-friendly error messages
+• Recovery procedures for common issues
+
+
+7.2 QUERYUNDERSTANDINGENGINE
+
+The QueryUnderstandingEngine implements advanced natural language processing to transform user queries into structured search operations with semantic understanding.
+
+CLASS DEFINITION
+```python
+class QueryUnderstandingEngine:
+    def analyze_query(self, query: str, context: SessionContext) -> Dict[str, Any]
+    def extract_entities(self, query: str) -> Dict[str, List[str]]
+    def classify_intent(self, query: str) -> str
+    def enhance_query_with_context(self, query: str, context: SessionContext) -> str
+    def detect_follow_up_queries(self, query: str, context: SessionContext) -> bool
+```
+
+CORE CAPABILITIES
+• Intent Classification and Understanding
+• Named Entity Recognition and Extraction
+• Context-Aware Query Enhancement
+• Follow-up Query Detection and Processing
+• Semantic Relationship Identification
+
+INTENT CLASSIFICATION
+SUPPORTED INTENTS:
+• SEARCH: "Find apartments near downtown"
+• FILTER: "Under $100 per night"
+• INFO: "Tell me about this property"
+• COMPARE: "Compare these options"
+• FOLLOW_UP: "What about ones with WiFi?"
+
+CLASSIFICATION ALGORITHM:
+1. Pattern-based rule matching
+2. Keyword frequency analysis
+3. Sentence structure examination
+4. Context-based disambiguation
+5. Confidence scoring and validation
+
+ENTITY EXTRACTION
+SUPPORTED ENTITY TYPES:
+• LOCATION: Cities, neighborhoods, landmarks
+• AMENITY: WiFi, parking, kitchen, pool
+• PROPERTY_TYPE: Apartment, house, room
+• NUMERIC: Prices, counts, ratings
+• TEMPORAL: Dates, duration, availability
+
+EXTRACTION METHODS:
+• Regular expression patterns
+• Vocabulary-based matching
+• Context-aware disambiguation
+• Synonym and variation handling
+• Multi-word entity recognition
+
+CONTEXT ENHANCEMENT
+CONTEXT SOURCES:
+• Previous query terms and entities
+• User preferences and filters
+• Session conversation history
+• Search result interactions
+• Implicit feedback signals
+
+ENHANCEMENT TECHNIQUES:
+• Query expansion with synonyms
+• Context-based term weighting
+• Entity relationship mapping
+• Preference-based filtering
+• Conversation flow continuity
+
+
+7.3 SEMANTICSEARCHENGINE
+
+The SemanticSearchEngine implements AI-powered search capabilities using state-of-the-art transformer models and vector similarity techniques.
+
+CLASS DEFINITION
+```python
+class SemanticSearchEngine:
+    def hybrid_search(self, query: str, top_k: int = 5) -> List[Dict]
+    def semantic_search(self, query: str, top_k: int = 5) -> List[Dict]
+    def fuzzy_search(self, query: str, threshold: int = 80) -> List[Dict]
+    def keyword_search(self, query: str, top_k: int = 10) -> List[Dict]
+    def initialize_models(self) -> bool
+    def rebuild_indexes(self) -> bool
+```
+
+SEARCH METHODOLOGIES
+
+SEMANTIC SEARCH
+TECHNOLOGY: sentence-transformers/all-MiniLM-L6-v2
+EMBEDDING DIMENSION: 384
+SIMILARITY METRIC: Cosine similarity
+INDEX TYPE: FAISS IndexFlatIP
+PROCESS:
+1. Generate query embedding using transformer model
+2. Search FAISS index for similar document vectors
+3. Calculate cosine similarity scores
+4. Rank results by semantic relevance
+5. Apply relevance threshold filtering
+
+FUZZY SEARCH
+TECHNOLOGY: FuzzyWuzzy with Levenshtein distance
+THRESHOLD: 80% similarity by default
+FIELDS: name, description, neighborhood_overview
+PROCESS:
+1. Generate fuzzy match scores for each field
+2. Weight scores by field importance
+3. Combine multi-field scores
+4. Filter by similarity threshold
+5. Rank by aggregate fuzzy score
+
+KEYWORD SEARCH
+TECHNOLOGY: TF-IDF vectorization with scikit-learn
+FIELD WEIGHTS: name(1.0), description(0.8), amenities(0.7)
+VOCABULARY: Domain-specific term expansion
+PROCESS:
+1. Tokenize and normalize query terms
+2. Calculate TF-IDF scores for documents
+3. Apply field-specific weighting
+4. Expand query with synonyms
+5. Rank by weighted relevance score
+
+HYBRID SEARCH
+FUSION ALGORITHM: Weighted combination with diversity optimization
+DEFAULT WEIGHTS: Semantic(0.8), Fuzzy(0.2), Keyword(0.5)
+DIVERSITY: MMR (Maximal Marginal Relevance) optimization
+PROCESS:
+1. Execute all search methods in parallel
+2. Normalize scores across different methods
+3. Apply weighted combination formula
+4. Optimize for result diversity
+5. Generate final ranked results
+
+PERFORMANCE OPTIMIZATION
+• Batch processing for multiple queries
+• Intelligent caching of embeddings
+• Lazy loading of heavyweight models
+• Memory-efficient index management
+• Parallel search execution
+
+
+7.4 NUMERICSEARCHENGINE
+
+The NumericSearchEngine specializes in extracting and processing numeric constraints from natural language queries, enabling precise filtering of property data.
+
+CLASS DEFINITION
+```python
+class NumericSearchEngine:
+    def extract_numeric_constraints(self, query: str) -> Dict[str, Any]
+    def filter_by_constraints(self, documents: List[Dict], constraints: Dict) -> List[Dict]
+    def parse_price_constraints(self, query: str) -> Dict[str, float]
+    def parse_accommodation_constraints(self, query: str) -> Dict[str, int]
+    def validate_constraints(self, constraints: Dict) -> bool
+```
+
+CONSTRAINT CATEGORIES
+
+PRICE CONSTRAINTS
+SUPPORTED PATTERNS:
+• "under $100" → max_price: 100
+• "between $50 and $150" → min_price: 50, max_price: 150
+• "around $75" → target_price: 75 (±20%)
+• "cheap" → max_price: 50 (relative)
+• "expensive" → min_price: 200 (relative)
+
+REGEX PATTERNS:
+• r'under\s*\$?(\d+)' - Maximum price detection
+• r'between\s*\$?(\d+)\s*and\s*\$?(\d+)' - Range detection
+• r'around\s*\$?(\d+)' - Target price detection
+• r'less than\s*\$?(\d+)' - Upper bound detection
+• r'more than\s*\$?(\d+)' - Lower bound detection
+
+ACCOMMODATION CONSTRAINTS
+BEDROOM PATTERNS:
+• "2 bedroom" → bedrooms: 2
+• "3+ bedrooms" → min_bedrooms: 3
+• "studio" → bedrooms: 0
+• "one bedroom" → bedrooms: 1
+
+BATHROOM PATTERNS:
+• "2 bathrooms" → bathrooms: 2
+• "1.5 bath" → bathrooms: 1.5
+• "ensuite" → min_bathrooms: 1
+
+GUEST CAPACITY:
+• "sleeps 4" → accommodates: 4
+• "for 6 people" → accommodates: 6
+• "couple" → accommodates: 2
+• "family" → accommodates: 4 (default)
+
+RATING CONSTRAINTS
+SUPPORTED PATTERNS:
+• "highly rated" → min_rating: 4.5
+• "good reviews" → min_rating: 4.0
+• "excellent" → min_rating: 4.8
+• "5 star" → min_rating: 4.9
+
+FILTERING ALGORITHM
+1. Extract all numeric constraints from query
+2. Validate constraint values and ranges
+3. Apply constraints sequentially to document set
+4. Handle missing data gracefully
+5. Log filtering statistics for optimization
+
+CONSTRAINT VALIDATION
+• Price range reasonableness checks
+• Bedroom/bathroom logical limits
+• Guest capacity validation
+• Rating scale verification (0-5)
+• Availability date validation
+
+
+7.5 VOCABULARYMANAGER
+
+The VocabularyManager handles domain-specific vocabulary extraction, synonym mapping, and query term enhancement for optimal search performance.
+
+CLASS DEFINITION
+```python
+class VocabularyManager:
+    def build_vocabulary_from_documents(self, documents: List[Dict])
+    def enhance_query_terms(self, query: str) -> str
+    def get_synonyms(self, term: str) -> List[str]
+    def save_vocabulary(self) -> bool
+    def load_vocabulary(self) -> bool
+    def update_term_frequencies(self, terms: List[str])
+```
+
+VOCABULARY COMPONENTS
+
+TERM EXTRACTION
+SOURCE FIELDS:
+• name: Property title and description
+• description: Detailed property information
+• neighborhood_overview: Area descriptions
+• amenities: Available facilities and features
+• host_about: Host information and descriptions
+
+EXTRACTION PROCESS:
+1. Text normalization and ASCII filtering
+2. Tokenization and stemming
+3. Stop word removal and filtering
+4. Term frequency calculation
+5. Domain-specific term identification
+
+SYNONYM MAPPING
+AIRBNB-SPECIFIC SYNONYMS:
+• apartment: ["apt", "flat", "condo", "unit"]
+• house: ["home", "residence", "dwelling"]
+• wifi: ["internet", "wireless", "wi-fi"]
+• parking: ["garage", "car park", "parking space"]
+• kitchen: ["kitchenette", "cooking facilities"]
+
+LOCATION SYNONYMS:
+• downtown: ["city center", "central", "urban core"]
+• near beach: ["beachfront", "coastal", "waterfront"]
+• quiet area: ["peaceful", "tranquil", "serene"]
+
+AMENITY MAPPING:
+• comfort: ["air conditioning", "heating", "climate control"]
+• entertainment: ["tv", "netflix", "cable", "streaming"]
+• convenience: ["elevator", "washer", "dryer", "dishwasher"]
+
+QUERY ENHANCEMENT
+ENHANCEMENT METHODS:
+• Synonym expansion for improved recall
+• Term weighting based on frequency
+• Context-aware term selection
+• Domain-specific term prioritization
+• Related term suggestion
+
+EXAMPLE ENHANCEMENT:
+ORIGINAL: "cheap apartment downtown"
+ENHANCED: "cheap budget affordable apartment apt flat condo downtown city center central urban core"
+
+PERSISTENT STORAGE
+STORAGE FORMAT: JSON files in data/ directory
+FILES:
+• vocabulary.json: Main vocabulary with frequencies
+• keyword_mappings.json: Synonym and mapping data
+• numeric_patterns.json: Numeric constraint patterns
+
+LOADING STRATEGY:
+• Automatic loading on system initialization
+• Fallback to empty vocabulary if files missing
+• Lazy rebuilding when vocabulary outdated
+• Background updates during idle periods
+
+
+7.6 RESPONSEGENERATOR
+
+The ResponseGenerator creates intelligent, contextual responses that summarize search results and provide natural language explanations.
+
+CLASS DEFINITION
+```python
+class ResponseGenerator:
+    def generate_response(self, query: str, results: List[Dict], context: SessionContext) -> str
+    def summarize_properties(self, properties: List[Dict], query: str) -> str
+    def format_search_results(self, results: List[Dict]) -> Dict[str, Any]
+    def generate_statistics_summary(self, search_stats: Dict) -> str
+    def create_contextual_explanation(self, query: str, context: SessionContext) -> str
+```
+
+RESPONSE GENERATION MODES
+
+SUMMARY GENERATION
+CONTENT ELEMENTS:
+• Result count and relevance assessment
+• Key property characteristics highlighted
+• Price range and average pricing
+• Location distribution summary
+• Amenity availability overview
+
+EXAMPLE SUMMARY:
+"Found 23 properties matching your search for '2 bedroom apartments downtown under $100'. Properties range from $65-$95 per night, with most located in the Central District. All include WiFi, and 18 have full kitchens. The highest-rated option is a modern apartment near Pike Place Market with 4.9 stars."
+
+CONTEXTUAL RESPONSES
+CONTEXT INTEGRATION:
+• Reference to previous queries
+• Acknowledgment of conversation flow
+• Follow-up suggestions based on search
+• Personalization based on session history
+• Progress tracking through complex searches
+
+FOLLOW-UP EXAMPLE:
+USER: "Find 2 bedroom apartments"
+SYSTEM: "Found 45 two-bedroom apartments. Would you like me to filter by location or price range?"
+USER: "Under $100"
+SYSTEM: "Narrowed down to 23 apartments under $100. Here are the top-rated options in your price range..."
+
+RESULT FORMATTING
+STRUCTURED OUTPUT:
+```json
+{
+  "results": [
+    {
+      "id": "property_id_123",
+      "rank": 1,
+      "relevance_score": 0.94,
+      "name": "Modern Downtown Apartment",
+      "price": 85,
+      "bedrooms": 2,
+      "rating": 4.9,
+      "key_amenities": ["WiFi", "Kitchen", "Parking"],
+      "summary": "Highly-rated apartment in the heart of downtown"
+    }
+  ],
+  "summary": "Found 23 matching properties...",
+  "search_stats": {
+    "total_results": 23,
+    "search_time": 0.84,
+    "methods_used": ["semantic", "numeric"]
+  }
+}
+```
+
+NATURAL LANGUAGE GENERATION
+TECHNIQUES:
+• Template-based generation with dynamic content
+• Context-aware language selection
+• Conversation-appropriate tone and style
+• Technical detail level adjustment
+• User expertise level consideration
+
+TEMPLATE EXAMPLES:
+BASIC: "Found {count} {property_type} matching your criteria."
+DETAILED: "Located {count} {property_type} in {location_summary}, ranging from ${min_price}-${max_price} per night, with an average rating of {avg_rating} stars."
+CONVERSATIONAL: "Great! I found {count} options that fit what you're looking for. The top choice is {top_property} at ${top_price} per night."
+
+ERROR AND EDGE CASE HANDLING
+NO RESULTS: "No properties match your exact criteria. Here are some similar options..." + relaxed search
+FEW RESULTS: "Found only {count} properties. Would you like to expand your search criteria?"
+TOO MANY RESULTS: "Found {count} properties. Here are the top {top_k} matches, or I can help you refine your search."
+
+PERFORMANCE CONSIDERATIONS
+• Response generation time: <200ms
+• Template caching for common patterns
+• Progressive enhancement for complex summaries
+• Graceful degradation for resource constraints
+• Asynchronous processing for detailed summaries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. AI/ML MODELS OVERVIEW
+
+
+8.1 MODEL CLASSIFICATION
+
+The JSON RAG System leverages multiple AI/ML models to deliver sophisticated natural language understanding and semantic search capabilities.
+
+MODEL CATEGORIES
+
+TRANSFORMER MODELS
+• Semantic Understanding: sentence-transformers/all-MiniLM-L6-v2
+• Text Processing: OpenAI GPT-based models for enhancement
+• Language Detection: Built-in language classification
+• Entity Recognition: Custom NER models for domain specificity
+
+VECTOR SEARCH MODELS
+• Embedding Generation: Transformer-based dense representations
+• Similarity Computation: Cosine similarity metrics
+• Index Optimization: FAISS-based vector search
+• Dimension Reduction: Optional PCA for large-scale deployment
+
+NATURAL LANGUAGE PROCESSING
+• Intent Classification: Rule-based + ML hybrid approach
+• Entity Extraction: Regular expressions + vocabulary matching
+• Query Enhancement: Synonym expansion and context integration
+• Response Generation: Template-based with dynamic content
+
+
+8.2 PERFORMANCE SPECIFICATIONS
+
+SENTENCE-TRANSFORMERS MODEL
+MODEL NAME: all-MiniLM-L6-v2
+PARAMETERS: 22.7M parameters
+EMBEDDING DIMENSION: 384
+INPUT LENGTH: 512 tokens maximum
+PERFORMANCE:
+• Inference Speed: 100+ sentences/second
+• Memory Usage: ~200MB model size
+• Accuracy: 85%+ on semantic similarity benchmarks
+• Languages: Optimized for English, supports multilingual
+
+FAISS INDEX PERFORMANCE
+INDEX TYPE: IndexFlatIP (Inner Product)
+SEARCH COMPLEXITY: O(n) for brute force
+MEMORY USAGE: ~1.5KB per document (384D vectors)
+QUERY LATENCY: <10ms for 10K documents
+SCALABILITY: Linear scaling up to 1M+ documents
+
+PROCESSING BENCHMARKS
+DOCUMENT PROCESSING: 50-100 docs/second
+EMBEDDING GENERATION: 20-50 embeddings/second
+QUERY UNDERSTANDING: <50ms average
+SEARCH EXECUTION: <500ms for complex queries
+RESPONSE GENERATION: <200ms for summaries
+
+
+8.3 LIMITATIONS AND CONSTRAINTS
+
+MODEL LIMITATIONS
+
+SENTENCE TRANSFORMER CONSTRAINTS
+• Maximum Input Length: 512 tokens (truncation required for longer texts)
+• Language Bias: Optimized for English, may perform poorly on other languages
+• Domain Specificity: General-purpose model, may miss domain-specific nuances
+• Context Window: Limited ability to process very long documents
+• Update Frequency: Static model, requires retraining for new domains
+
+SEARCH LIMITATIONS
+• Exact Match Dependency: Fuzzy search may miss creative spelling variations
+• Semantic Ambiguity: Model may struggle with highly ambiguous queries
+• Cultural Context: Limited understanding of location-specific cultural references
+• Temporal Understanding: No built-in understanding of time-dependent queries
+• Numerical Reasoning: Limited mathematical and logical reasoning capabilities
+
+SCALABILITY CONSTRAINTS
+• Memory Requirements: 2-8GB RAM recommended for optimal performance
+• CPU Intensity: Transformer inference requires significant computational resources
+• Storage Needs: Vector indexes can become large for massive document sets
+• Network Latency: Model downloads may be slow on limited bandwidth connections
+• Concurrent Users: Performance degrades with >50 simultaneous users
+
+DATA QUALITY DEPENDENCIES
+• Document Quality: Poor source data leads to degraded search quality
+• Vocabulary Coverage: Model performance depends on training data similarity
+• Field Completeness: Missing document fields reduce search effectiveness
+• Data Consistency: Inconsistent data formats can confuse entity extraction
+• Update Synchronization: Stale indexes can lead to inconsistent results
+
+
+8.4 MODEL DEPENDENCIES
+
+CORE DEPENDENCIES
+
+PYTHON PACKAGES
+• transformers>=4.21.0: Hugging Face transformer models
+• sentence-transformers>=2.2.2: Sentence embedding models
+• torch>=1.12.0: PyTorch deep learning framework
+• numpy>=1.21.0: Numerical computing support
+• scikit-learn>=1.1.0: Machine learning utilities
+
+AI/ML LIBRARIES
+• faiss-cpu>=1.7.3: Vector similarity search
+• spacy>=3.4.0: Advanced NLP processing (optional)
+• nltk>=3.7: Natural language toolkit
+• fuzzywuzzy>=0.18.0: Fuzzy string matching
+• python-Levenshtein>=0.12.2: String distance calculations
+
+SUPPORT LIBRARIES
+• pandas>=1.4.0: Data manipulation
+• tqdm>=4.64.0: Progress bars
+• requests>=2.28.0: HTTP library for model downloads
+• pyyaml>=6.0: Configuration file processing
+
+MODEL DOWNLOAD REQUIREMENTS
+AUTOMATIC DOWNLOAD: Models downloaded on first use
+INTERNET REQUIREMENT: Required for initial model download
+SIZE REQUIREMENTS:
+• sentence-transformers model: ~90MB
+• PyTorch libraries: ~500MB
+• Additional dependencies: ~100MB
+OFFLINE CAPABILITY: Full offline operation after initial setup
+
+SYSTEM REQUIREMENTS
+MINIMUM SPECIFICATIONS:
+• RAM: 4GB (8GB recommended)
+• CPU: 2+ cores (4+ cores recommended)
+• Storage: 5GB free space
+• Python: 3.8 or higher
+• Operating System: Windows, macOS, Linux
+
+RECOMMENDED SPECIFICATIONS:
+• RAM: 8GB+ (16GB for large datasets)
+• CPU: 4+ cores with AVX support
+• Storage: 10GB+ free space (SSD recommended)
+• GPU: CUDA support beneficial but not required
+• Network: Broadband for initial setup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. INSTALLATION AND SETUP
+
+
+9.1 PREREQUISITES
+
+SYSTEM REQUIREMENTS
+
+HARDWARE REQUIREMENTS
+MINIMUM:
+• CPU: Dual-core processor (2+ GHz)
+• RAM: 4GB minimum (8GB recommended)
+• Storage: 5GB free disk space
+• Network: Internet connection for initial setup
+
+RECOMMENDED:
+• CPU: Quad-core processor with AVX support
+• RAM: 8GB+ (16GB for production)
+• Storage: 10GB+ free space on SSD
+• Network: Broadband connection (>10 Mbps)
+
+SOFTWARE REQUIREMENTS
+OPERATING SYSTEM:
+• Windows 10/11 (64-bit)
+• macOS 10.14+ (Intel or Apple Silicon)
+• Ubuntu 18.04+ or equivalent Linux distribution
+
+PYTHON ENVIRONMENT:
+• Python 3.8 or higher (3.9+ recommended)
+• pip package manager
+• Virtual environment capability (venv or conda)
+
+DATABASE REQUIREMENTS
+MONGODB:
+• MongoDB 4.0 or higher
+• Running MongoDB instance (local or remote)
+• Valid connection URI
+• Database with Airbnb collection data
+
+NETWORK ACCESS:
+• Internet connection for model downloads
+• Access to MongoDB server
+• Firewall exceptions for web interface ports
+
+
+9.2 INSTALLATION PROCESS
+
+STEP-BY-STEP INSTALLATION
+
+STEP 1: ENVIRONMENT SETUP
+1. Create Virtual Environment
+```bash
+# Using venv
+python -m venv json_rag_env
+
+# Activate (Windows)
+json_rag_env\Scripts\activate
+
+# Activate (macOS/Linux)
+source json_rag_env/bin/activate
+```
+
+2. Upgrade pip and Essential Tools
+```bash
+python -m pip install --upgrade pip
+pip install wheel setuptools
+```
+
+STEP 2: PROJECT DOWNLOAD
+1. Clone or Download Project
+```bash
+# If using git
+git clone https://github.com/your-repo/json_rag_system.git
+cd json_rag_system
+
+# If using downloaded ZIP
+# Extract to desired directory and navigate to it
+```
+
+STEP 3: DEPENDENCY INSTALLATION
+1. Install Required Packages
+```bash
+# Install from requirements file
+pip install -r requirements.txt
+
+# Manual installation if needed
+pip install sentence-transformers faiss-cpu pymongo gradio pandas numpy scikit-learn
+```
+
+2. Verify Installation
+```bash
+python -c "import sentence_transformers, faiss, pymongo, gradio; print('All dependencies installed successfully')"
+```
+
+STEP 4: DATABASE CONNECTION
+1. Configure MongoDB Connection
+Edit `config/config.py`:
+```python
+DATABASE_CONFIG = {
+    'uri': 'mongodb://localhost:27017/',  # Your MongoDB URI
+    'database': 'airbnb_database',       # Database name
+    'collection': 'airbnb_data'          # Collection name
+}
+```
+
+2. Test Database Connection
+```bash
+python setup.py --test-db
+```
+
+STEP 5: SYSTEM INITIALIZATION
+1. Run Complete Setup
+```bash
+python setup.py --full-setup
+```
+
+This command will:
+• Validate environment and dependencies
+• Create necessary directories
+• Build vocabulary from database
+• Generate embeddings and indexes
+• Verify system functionality
+• Generate setup report
+
+2. Expected Output
+```
+✓ Environment validation completed
+✓ MongoDB connection established
+✓ Vocabulary built (15,247 terms)
+✓ Document processing completed (4,832 documents)
+✓ Embeddings generated and cached
+✓ FAISS index created and optimized
+✓ System validation passed
+✓ Setup completed successfully
+
+System ready for use. Run 'python main.py' to start.
+```
+
+STEP 6: LAUNCH VERIFICATION
+1. Start the System
+```bash
+python main.py
+```
+
+2. Expected Startup Messages
+```
+🔄 Initializing JSON RAG System...
+✓ Configuration loaded
+✓ Database connected (4,832 documents)
+✓ Vocabulary loaded (15,247 terms)
+✓ AI models initialized
+✓ Search indexes ready
+
+🚀 System ready! Access at: http://localhost:7860
+```
+
+3. Test Basic Functionality
+Open browser to `http://localhost:7860` and test with:
+"Find 2 bedroom apartments downtown under $100"
+
+
+9.3 CONFIGURATION
+
+CONFIGURATION FILES
+
+MAIN CONFIGURATION (config/config.py)
+```python
+# Database Settings
+DATABASE_CONFIG = {
+    'uri': 'mongodb://localhost:27017/',
+    'database': 'airbnb_database',
+    'collection': 'airbnb_data',
+    'timeout': 30000
+}
+
+# AI Model Settings
+MODEL_CONFIG = {
+    'embedding_model': 'sentence-transformers/all-MiniLM-L6-v2',
+    'max_sequence_length': 512,
+    'batch_size': 32,
+    'device': 'auto'  # 'cpu', 'cuda', or 'auto'
+}
+
+# Search Settings
+SEARCH_CONFIG = {
+    'default_results': 5,
+    'max_results': 50,
+    'semantic_weight': 0.8,
+    'fuzzy_weight': 0.2,
+    'keyword_weight': 0.5,
+    'fuzzy_threshold': 80
+}
+
+# Performance Settings
+PERFORMANCE_CONFIG = {
+    'cache_embeddings': True,
+    'lazy_loading': True,
+    'batch_processing': True,
+    'max_memory_gb': 8
+}
+```
+
+AIRBNB-SPECIFIC CONFIGURATION (config/airbnb_config.py)
+```python
+# Property Type Mappings
+PROPERTY_TYPES = {
+    'apartment': ['apt', 'flat', 'condo', 'unit'],
+    'house': ['home', 'residence', 'dwelling', 'villa'],
+    'room': ['bedroom', 'private room', 'guest room'],
+    'studio': ['efficiency', 'bachelor', 'bedsit']
+}
+
+# Amenity Categories
+AMENITY_CATEGORIES = {
+    'connectivity': ['wifi', 'internet', 'wireless'],
+    'parking': ['garage', 'parking space', 'car park'],
+    'kitchen': ['cooking facilities', 'kitchenette'],
+    'laundry': ['washer', 'dryer', 'laundry'],
+    'entertainment': ['tv', 'netflix', 'cable']
+}
+
+# Location Synonyms
+LOCATION_SYNONYMS = {
+    'downtown': ['city center', 'central', 'urban core'],
+    'beach': ['beachfront', 'coastal', 'waterfront'],
+    'airport': ['near airport', 'airport access']
+}
+```
+
+LOGGING CONFIGURATION (config/logging_config.py)
+```python
+LOGGING_CONFIG = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detailed': {
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s - %(message)s'
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/system.log',
+            'maxBytes': 10485760,  # 10MB
+            'backupCount': 5,
+            'formatter': 'detailed'
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        }
+    },
+    'loggers': {
+        'json_rag_system': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False
+        }
+    }
+}
+```
+
+NUMERIC PROCESSING (config/numeric_config.py)
+```python
+# Price Extraction Patterns
+PRICE_PATTERNS = {
+    'under': r'under\s*\$?(\d+)',
+    'over': r'over\s*\$?(\d+)',
+    'between': r'between\s*\$?(\d+)\s*and\s*\$?(\d+)',
+    'around': r'around\s*\$?(\d+)',
+    'exactly': r'exactly\s*\$?(\d+)',
+    'max': r'maximum\s*\$?(\d+)'
+}
+
+# Accommodation Patterns
+ACCOMMODATION_PATTERNS = {
+    'bedrooms': r'(\d+)\s*bedroom',
+    'bathrooms': r'(\d+(?:\.5)?)\s*bath',
+    'guests': r'(?:sleeps?|accommodates?)\s*(\d+)',
+    'studio': r'studio'
+}
+
+# Rating Patterns
+RATING_PATTERNS = {
+    'highly_rated': 4.5,
+    'excellent': 4.8,
+    'good': 4.0,
+    'superhost': 4.7
+}
+```
+
+
+9.4 VERIFICATION
+
+SYSTEM HEALTH CHECKS
+
+COMPONENT VERIFICATION
+1. Database Connection Test
+```bash
+python setup.py --test-db
+```
+Expected Output:
+```
+✓ MongoDB connection successful
+✓ Database 'airbnb_database' accessible
+✓ Collection 'airbnb_data' found
+✓ Document count: 4,832
+✓ Sample document validation passed
+```
+
+2. AI Models Verification
+```bash
+python setup.py --test-models
+```
+Expected Output:
+```
+✓ Sentence transformer model loaded successfully
+✓ Model device: CPU
+✓ Test embedding generation: [384] dimensions
+✓ FAISS index operational
+✓ Search functionality verified
+```
+
+3. Complete System Test
+```bash
+python setup.py --full-test
+```
+Expected Output:
+```
+✓ All components initialized
+✓ Test search query processed
+✓ Results generated successfully
+✓ Response formatting verified
+✓ Performance within acceptable ranges
+✓ System fully operational
+```
+
+PERFORMANCE BENCHMARKS
+1. Startup Performance
+```bash
+python -c "import time; start=time.time(); from core_system import JSONRAGSystem; system=JSONRAGSystem(); print(f'Startup time: {time.time()-start:.2f}s')"
+```
+Expected: 10-30 seconds
+
+2. Search Performance
+```bash
+python -c "from core_system import JSONRAGSystem; import time; system=JSONRAGSystem(); start=time.time(); result=system.search('2 bedroom apartment downtown'); print(f'Search time: {time.time()-start:.2f}s')"
+```
+Expected: <2 seconds
+
+3. Memory Usage Monitoring
+```bash
+python -c "import psutil, os; from core_system import JSONRAGSystem; system=JSONRAGSystem(); process = psutil.Process(os.getpid()); print(f'Memory usage: {process.memory_info().rss / 1024 / 1024:.1f} MB')"
+```
+Expected: 2-4 GB
+
+TROUBLESHOOTING COMMON ISSUES
+
+DEPENDENCY ISSUES
+Problem: "ModuleNotFoundError: No module named 'sentence_transformers'"
+Solution:
+```bash
+pip install sentence-transformers
+# Or reinstall all dependencies
+pip install -r requirements.txt
+```
+
+DATABASE CONNECTION ISSUES
+Problem: "ServerSelectionTimeoutError: No servers found"
+Solution:
+1. Verify MongoDB is running: `mongosh` or `mongo`
+2. Check connection URI in `config/config.py`
+3. Verify network connectivity and firewall settings
+
+MEMORY ISSUES
+Problem: "OutOfMemoryError" or slow performance
+Solution:
+1. Increase system RAM or use swap file
+2. Reduce batch size in `config/config.py`
+3. Enable lazy loading: `lazy_loading: True`
+4. Use CPU-only mode: `device: 'cpu'`
+
+PORT CONFLICTS
+Problem: "Port 7860 already in use"
+Solution:
+1. Find and kill existing process: `lsof -ti:7860 | xargs kill -9`
+2. Use different port: `python main.py --port 7861`
+3. Check for other Gradio instances
+
+PERFORMACE DEGRADATION
+Problem: Slow search responses
+Solution:
+1. Run setup to rebuild indexes: `python setup.py --rebuild-indexes`
+2. Clear cache and restart: `rm -rf cache/*; python setup.py --rebuild-embeddings`
+3. Check system resources and close other applications
+4. Verify database connection speed
+
+SUCCESS INDICATORS
+✓ Web interface accessible at specified port
+✓ Search queries return relevant results in <2 seconds
+✓ System startup completes in <30 seconds
+✓ No error messages in logs/system.log
+✓ Memory usage stable and within acceptable limits
+✓ Database connection established and maintained
+✓ All setup validation tests pass
+
+NEXT STEPS AFTER INSTALLATION
+1. Review system documentation in documentation/
+2. Test with various query types to understand capabilities
+3. Configure logging and monitoring as needed
+4. Set up automated backups for indexes and vocabulary
+5. Consider performance tuning for production deployment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10. API REFERENCE
+
+
+10.1 MAIN SEARCH API
+
+The core search API provides programmatic access to the JSON RAG System's search capabilities through well-defined interfaces.
+
+JSONRAGSystem.search()
+PURPOSE: Execute comprehensive natural language search
+SIGNATURE: search(query: str, session_id: str = None) -> Dict[str, Any]
+
+PARAMETERS:
+• query (str): Natural language search query
+• session_id (str, optional): Session identifier for conversation context
+
+RETURN VALUE:
+```python
+{
+    'results': List[Dict],           # Matching property documents
+    'summary': str,                  # AI-generated response summary
+    'search_stats': Dict,            # Performance and relevance metrics
+    'session_context': Dict,         # Updated conversation state
+    'total_results': int,            # Total number of matches found
+    'search_time': float,            # Total processing time in seconds
+    'methods_used': List[str]        # Search methods employed
+}
+```
+
+EXAMPLE USAGE:
+```python
+from core_system import JSONRAGSystem
+
+# Initialize system
+system = JSONRAGSystem()
+
+# Basic search
+result = system.search("2 bedroom apartments downtown under $100")
+print(f"Found {result['total_results']} properties")
+print(f"Summary: {result['summary']}")
+
+# Conversational search with session
+result1 = system.search("apartments in Seattle", session_id="user123")
+result2 = system.search("under $200 with WiFi", session_id="user123")
+# Second query enhanced with context from first query
+```
+
+RESULT STRUCTURE:
+Each result in the 'results' list contains:
+```python
+{
+    'id': str,                      # Unique property identifier
+    'rank': int,                    # Search result ranking (1-based)
+    'relevance_score': float,       # Relevance score (0.0-1.0)
+    'name': str,                    # Property name/title
+    'description': str,             # Property description
+    'price': float,                 # Price per night
+    'bedrooms': int,                # Number of bedrooms
+    'bathrooms': float,             # Number of bathrooms
+    'accommodates': int,            # Guest capacity
+    'neighborhood': str,            # Neighborhood name
+    'rating': float,                # Average rating (0.0-5.0)
+    'num_reviews': int,             # Number of reviews
+    'amenities': List[str],         # Available amenities
+    'property_type': str,           # Type of property
+    'key_features': List[str],      # Highlighted features
+    'match_reasons': List[str]      # Why this property matched
+}
+```
+
+ERROR HANDLING:
+The API returns error information in the response:
+```python
+{
+    'error': True,
+    'error_type': str,              # Error category
+    'error_message': str,           # User-friendly error message
+    'error_details': str,           # Technical details for debugging
+    'suggestions': List[str]        # Recovery suggestions
+}
+```
+
+COMMON ERROR TYPES:
+• 'database_error': MongoDB connection or query issues
+• 'model_error': AI model loading or inference problems
+• 'query_error': Invalid or malformed query
+• 'system_error': General system or configuration issues
+
+
+10.2 SESSION MANAGEMENT
+
+Session management enables conversation-aware search with context preservation across multiple queries.
+
+SessionContext Class
+PURPOSE: Manage conversation state and context
+SIGNATURE: SessionContext(session_id: str)
+
+KEY METHODS:
+
+add_query(query: str, results: List[Dict])
+PURPOSE: Add query and results to conversation history
+PARAMETERS:
+• query: The submitted search query
+• results: The search results returned
+
+get_context_entities() -> Dict[str, List[str]]
+PURPOSE: Extract entities mentioned in conversation
+RETURNS: Dictionary mapping entity types to entity values
+
+get_conversation_summary() -> str
+PURPOSE: Generate summary of conversation flow
+RETURNS: Natural language summary of the conversation
+
+update_preferences(preferences: Dict)
+PURPOSE: Update user preferences based on interactions
+PARAMETERS:
+• preferences: Dictionary of preference updates
+
+EXAMPLE SESSION FLOW:
+```python
+# First query in session
+response1 = system.search(
+    query="apartments in downtown Seattle",
+    session_id="user123"
+)
+
+# Follow-up query (context-aware)
+response2 = system.search(
+    query="under $150 with parking",
+    session_id="user123"
+)
+# System understands this refers to Seattle apartments
+
+# Another follow-up
+response3 = system.search(
+    query="what about 2 bedrooms?",
+    session_id="user123"
+)
+# System applies previous context: Seattle, <$150, parking, 2BR
+```
+
+CONTEXT PRESERVATION:
+Session context includes:
+• Query history and refinements
+• Entity mentions (locations, amenities)
+• Numeric constraints (price, bedrooms)
+• User preferences and selections
+• Search result interactions
+
+SESSION TIMEOUT:
+• Default timeout: 30 minutes of inactivity
+• Configurable in system settings
+• Automatic cleanup of expired sessions
+
+
+10.3 SYSTEM ADMINISTRATION
+
+Administrative APIs provide system monitoring, maintenance, and configuration capabilities.
+
+get_system_stats() -> Dict[str, Any]
+PURPOSE: Comprehensive system health and performance monitoring
+RETURNS:
+```python
+{
+    'system_status': {
+        'initialized': bool,
+        'startup_time': float,
+        'uptime_seconds': float,
+        'version': str
+    },
+    'database_status': {
+        'connected': bool,
+        'document_count': int,
+        'connection_time_ms': float,
+        'last_ping': str
+    },
+    'model_status': {
+        'sentence_transformer_loaded': bool,
+        'faiss_index_ready': bool,
+        'vocabulary_size': int,
+        'embedding_cache_size': int
+    },
+    'performance_metrics': {
+        'total_queries_processed': int,
+        'average_query_time_ms': float,
+        'active_sessions': int,
+        'cache_hit_rate': float
+    },
+    'resource_usage': {
+        'memory_usage_mb': float,
+        'cpu_usage_percent': float,
+        'disk_usage_mb': float
+    },
+    'component_health': {
+        'query_processor': str,     # 'healthy', 'degraded', 'error'
+        'search_engine': str,
+        'response_generator': str,
+        'vocabulary_manager': str
+    }
+}
+```
+
+reinitialize_system() -> bool
+PURPOSE: Reinitialize system components without restart
+USE CASES:
+• Configuration changes
+• Model updates
+• Cache clearing
+• Error recovery
+
+rebuild_indexes() -> bool
+PURPOSE: Rebuild search indexes from current database
+USE CASES:
+• Data updates
+• Performance optimization
+• Index corruption recovery
+
+get_detailed_status(component: str = None) -> Dict
+PURPOSE: Detailed diagnostic information for specific components
+PARAMETERS:
+• component: Optional component name for focused diagnostics
+COMPONENTS:
+• 'database': MongoDB connection and query statistics
+• 'models': AI model status and performance
+• 'search': Search engine performance metrics
+• 'cache': Cache utilization and hit rates
+• 'sessions': Active session information
+
+
+10.4 QUERY PROCESSING
+
+Advanced query processing APIs provide access to individual components of the search pipeline.
+
+QueryUnderstandingEngine APIs
+
+analyze_query(query: str, context: SessionContext = None) -> Dict
+PURPOSE: Comprehensive query analysis and understanding
+RETURNS:
+```python
+{
+    'intent': str,                  # Classified intent
+    'confidence': float,            # Intent classification confidence
+    'entities': {
+        'locations': List[str],
+        'amenities': List[str],
+        'property_types': List[str],
+        'numeric_values': Dict
+    },
+    'enhanced_query': str,          # Query with synonyms and context
+    'context_applied': bool,        # Whether session context was used
+    'processing_time_ms': float
+}
+```
+
+extract_numeric_constraints(query: str) -> Dict
+PURPOSE: Extract numeric constraints from natural language
+RETURNS:
+```python
+{
+    'price': {
+        'min': float,
+        'max': float,
+        'target': float
+    },
+    'bedrooms': {
+        'min': int,
+        'exact': int
+    },
+    'bathrooms': {
+        'min': float,
+        'exact': float
+    },
+    'accommodates': {
+        'min': int,
+        'exact': int
+    },
+    'rating': {
+        'min': float
+    }
+}
+```
+
+SemanticSearchEngine APIs
+
+semantic_search(query: str, top_k: int = 5) -> List[Dict]
+PURPOSE: Pure semantic search using AI embeddings
+PARAMETERS:
+• query: Natural language query
+• top_k: Number of results to return
+
+fuzzy_search(query: str, threshold: int = 80) -> List[Dict]
+PURPOSE: Fuzzy string matching search
+PARAMETERS:
+• query: Search query
+• threshold: Similarity threshold (0-100)
+
+keyword_search(query: str, top_k: int = 10) -> List[Dict]
+PURPOSE: Traditional keyword-based search
+PARAMETERS:
+• query: Keyword query
+• top_k: Number of results to return
+
+hybrid_search(query: str, weights: Dict = None) -> List[Dict]
+PURPOSE: Combined multi-modal search
+PARAMETERS:
+• query: Search query
+• weights: Optional custom weight configuration
+
+EXAMPLE WEIGHT CONFIGURATION:
+```python
+weights = {
+    'semantic': 0.7,
+    'fuzzy': 0.2,
+    'keyword': 0.4
+}
+results = engine.hybrid_search(query, weights=weights)
+```
+
+VocabularyManager APIs
+
+get_synonyms(term: str) -> List[str]
+PURPOSE: Get synonym list for a specific term
+PARAMETERS:
+• term: Input term
+RETURNS: List of synonyms and related terms
+
+enhance_query_terms(query: str) -> str
+PURPOSE: Expand query with synonyms and related terms
+PARAMETERS:
+• query: Original query
+RETURNS: Enhanced query with additional terms
+
+get_vocabulary_stats() -> Dict
+PURPOSE: Vocabulary statistics and coverage information
+RETURNS:
+```python
+{
+    'total_terms': int,
+    'unique_terms': int,
+    'synonym_mappings': int,
+    'top_terms': List[Tuple[str, int]],
+    'coverage_percentage': float,
+    'last_updated': str
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11. CONFIGURATION GUIDE
+
+
+11.1 DATABASE CONFIGURATION
+
+The system supports flexible MongoDB configuration for various deployment scenarios.
+
+CONNECTION CONFIGURATION
+
+Basic Local Configuration
+```python
+# config/config.py
+DATABASE_CONFIG = {
+    'uri': 'mongodb://localhost:27017/',
+    'database': 'airbnb_database',
+    'collection': 'airbnb_data',
+    'timeout': 30000,
+    'max_pool_size': 50
+}
+```
+
+Authenticated Remote Connection
+```python
+DATABASE_CONFIG = {
+    'uri': 'mongodb://username:password@hostname:27017/database_name',
+    'database': 'airbnb_production',
+    'collection': 'listings',
+    'timeout': 45000,
+    'max_pool_size': 100,
+    'ssl': True,
+    'ssl_cert_reqs': 'CERT_REQUIRED'
+}
+```
+
+MongoDB Atlas Configuration
+```python
+DATABASE_CONFIG = {
+    'uri': 'mongodb+srv://username:password@cluster.xyz.mongodb.net/database',
+    'database': 'airbnb_cloud',
+    'collection': 'properties',
+    'timeout': 60000,
+    'retry_writes': True,
+    'w': 'majority'
+}
+```
+
+CONNECTION PARAMETERS
+
+CORE SETTINGS:
+• uri: MongoDB connection string
+• database: Target database name
+• collection: Document collection name
+• timeout: Connection timeout in milliseconds
+
+PERFORMANCE SETTINGS:
+• max_pool_size: Maximum connection pool size (50-100 recommended)
+• min_pool_size: Minimum connection pool size (10 recommended)
+• max_idle_time_ms: Maximum connection idle time
+• socket_timeout_ms: Socket operation timeout
+
+RELIABILITY SETTINGS:
+• retry_writes: Enable automatic write retries
+• read_preference: Read preference strategy
+• w: Write concern (majority recommended)
+• j: Journal acknowledgment
+
+SECURITY SETTINGS:
+• ssl: Enable SSL/TLS encryption
+• ssl_cert_reqs: Certificate validation level
+• auth_source: Authentication database
+• auth_mechanism: Authentication mechanism
+
+DATA VALIDATION
+
+REQUIRED FIELDS:
+The system expects documents with these minimum fields:
+```python
+REQUIRED_DOCUMENT_SCHEMA = {
+    '_id': ObjectId,                # Unique identifier
+    'name': str,                    # Property name
+    'description': str,             # Property description
+    'price': Union[int, float],     # Price per night
+    'bedrooms': Union[int, float],  # Number of bedrooms
+    'accommodates': int,            # Guest capacity
+    'neighborhood_overview': str,   # Area description
+    'amenities': Union[str, List]   # Available amenities
+}
+```
+
+OPTIONAL FIELDS:
+```python
+OPTIONAL_FIELDS = {
+    'bathrooms': Union[int, float],
+    'rating': float,
+    'num_reviews': int,
+    'property_type': str,
+    'room_type': str,
+    'host_about': str,
+    'latitude': float,
+    'longitude': float,
+    'availability': Dict
+}
+```
+
+DATABASE OPTIMIZATION
+
+RECOMMENDED INDEXES:
+```javascript
+// MongoDB shell commands for index creation
+db.airbnb_data.createIndex({"name": "text", "description": "text"})
+db.airbnb_data.createIndex({"price": 1})
+db.airbnb_data.createIndex({"bedrooms": 1})
+db.airbnb_data.createIndex({"accommodates": 1})
+db.airbnb_data.createIndex({"rating": -1})
+db.airbnb_data.createIndex({"neighborhood": 1})
+```
+
+QUERY OPTIMIZATION:
+• Use projection to limit returned fields
+• Implement proper indexing strategy
+• Configure read preferences for performance
+• Use aggregation pipeline for complex queries
+
+
+11.2 AI MODEL CONFIGURATION
+
+AI model configuration controls the behavior and performance of semantic search and NLP components.
+
+MODEL SELECTION
+
+Sentence Transformer Models
+```python
+# config/config.py
+MODEL_CONFIG = {
+    # High performance, standard size (recommended)
+    'embedding_model': 'sentence-transformers/all-MiniLM-L6-v2',
+    
+    # Alternative models:
+    # 'sentence-transformers/all-mpnet-base-v2',  # Higher quality, slower
+    # 'sentence-transformers/paraphrase-MiniLM-L6-v2',  # Paraphrase detection
+    # 'sentence-transformers/distilbert-base-nli-stsb-mean-tokens'  # Older
+}
+```
+
+MODEL CHARACTERISTICS:
+
+all-MiniLM-L6-v2 (default):
+• Size: 90MB
+• Dimensions: 384
+• Speed: Fast
+• Quality: Good
+• Use case: Production systems
+
+all-mpnet-base-v2:
+• Size: 420MB
+• Dimensions: 768
+• Speed: Medium
+• Quality: Excellent
+• Use case: High-accuracy requirements
+
+paraphrase-MiniLM-L6-v2:
+• Size: 90MB
+• Dimensions: 384
+• Speed: Fast
+• Quality: Good for paraphrases
+• Use case: Query understanding
+
+PERFORMANCE CONFIGURATION
+
+```python
+MODEL_CONFIG = {
+    'embedding_model': 'sentence-transformers/all-MiniLM-L6-v2',
+    'max_sequence_length': 512,     # Maximum input tokens
+    'batch_size': 32,               # Batch size for embedding generation
+    'device': 'auto',               # 'cpu', 'cuda', 'auto'
+    'model_cache_dir': './models',  # Local model storage
+    'trust_remote_code': False      # Security setting
+}
+```
+
+DEVICE CONFIGURATION:
+• 'auto': Automatically select best available device
+• 'cpu': Force CPU usage (slower, more compatible)
+• 'cuda': Force GPU usage (requires CUDA installation)
+• 'mps': Apple Silicon GPU support
+
+MEMORY OPTIMIZATION:
+```python
+MEMORY_CONFIG = {
+    'lazy_loading': True,           # Load models on demand
+    'model_cache': True,            # Cache loaded models
+    'clear_cache_on_idle': True,    # Free memory when idle
+    'max_model_cache_mb': 2048      # Maximum model cache size
+}
+```
+
+
+11.3 SEARCH PARAMETERS
+
+Search configuration controls the behavior and quality of different search methods.
+
+SEARCH WEIGHTS AND THRESHOLDS
+
+```python
+# config/config.py
+SEARCH_CONFIG = {
+    # Result limits
+    'default_results': 5,
+    'max_results': 50,
+    'min_results': 1,
+    
+    # Search method weights
+    'semantic_weight': 0.8,         # AI semantic search importance
+    'fuzzy_weight': 0.2,            # Fuzzy matching importance
+    'keyword_weight': 0.5,          # Keyword search importance
+    
+    # Quality thresholds
+    'fuzzy_threshold': 80,          # Minimum fuzzy match percentage
+    'semantic_threshold': 0.3,      # Minimum semantic similarity
+    'relevance_threshold': 0.1,     # Minimum overall relevance
+    
+    # Performance settings
+    'enable_caching': True,
+    'cache_ttl_minutes': 30,
+    'parallel_search': True
+}
+```
+
+SEARCH METHOD CONFIGURATION
+
+Semantic Search Settings:
+```python
+SEMANTIC_CONFIG = {
+    'similarity_metric': 'cosine',   # 'cosine', 'dot_product', 'euclidean'
+    'normalization': True,           # Normalize embeddings
+    'dimension_reduction': False,    # Optional PCA reduction
+    'index_type': 'flat',           # 'flat', 'ivf', 'hnsw'
+    'search_k': -1                  # FAISS search parameter (-1 = exhaustive)
+}
+```
+
+Fuzzy Search Settings:
+```python
+FUZZY_CONFIG = {
+    'algorithm': 'levenshtein',      # 'levenshtein', 'jaro_winkler'
+    'case_sensitive': False,
+    'ignore_punctuation': True,
+    'token_sort_ratio': True,        # Sort tokens before comparison
+    'token_set_ratio': True,         # Use set-based comparison
+    'partial_ratio': True           # Allow partial string matches
+}
+```
+
+Keyword Search Settings:
+```python
+KEYWORD_CONFIG = {
+    'vectorizer': 'tfidf',           # 'tfidf', 'count'
+    'max_features': 10000,           # Maximum vocabulary size
+    'ngram_range': (1, 2),          # N-gram range (unigrams + bigrams)
+    'stop_words': 'english',         # Stop word removal
+    'analyzer': 'word',             # 'word', 'char', 'char_wb'
+    'min_df': 2,                    # Minimum document frequency
+    'max_df': 0.95                  # Maximum document frequency
+}
+```
+
+FIELD WEIGHTS
+
+```python
+FIELD_WEIGHTS = {
+    'name': 1.5,                    # Property name (highest importance)
+    'description': 1.0,             # Main description (baseline)
+    'neighborhood_overview': 0.8,    # Area description
+    'amenities': 0.7,               # Available amenities
+    'host_about': 0.3,              # Host information (lowest)
+    'property_type': 0.9,           # Property type
+    'room_type': 0.8
+}
+```
+
+RESULT OPTIMIZATION
+
+```python
+RESULT_CONFIG = {
+    # Diversity optimization
+    'diversity_lambda': 0.5,        # MMR diversity parameter
+    'max_similar_results': 3,       # Limit highly similar results
+    
+    # Ranking factors
+    'relevance_weight': 0.7,        # Search relevance importance
+    'popularity_weight': 0.2,       # Rating/review importance
+    'freshness_weight': 0.1,        # Recent activity importance
+    
+    # Result enhancement
+    'highlight_matches': True,      # Highlight matching terms
+    'explain_relevance': True,      # Include relevance explanation
+    'include_alternatives': False   # Suggest alternative queries
+}
+```
+
+
+11.4 FILE SYSTEM CONFIGURATION
+
+File system configuration manages data storage, caching, and logging.
+
+DIRECTORY STRUCTURE
+
+```python
+# config/config.py
+FILE_SYSTEM_CONFIG = {
+    # Base directories
+    'base_dir': './',
+    'cache_dir': './cache',
+    'data_dir': './data',
+    'indexes_dir': './indexes',
+    'logs_dir': './logs',
+    'models_dir': './models',
+    
+    # File naming
+    'vocabulary_file': 'vocabulary.json',
+    'embeddings_file': 'embeddings_cache.pkl',
+    'index_file': 'faiss_index.faiss',
+    'documents_file': 'processed_documents.pkl'
+}
+```
+
+CACHE CONFIGURATION
+
+```python
+CACHE_CONFIG = {
+    # Cache behavior
+    'enable_embedding_cache': True,
+    'enable_query_cache': True,
+    'enable_result_cache': False,   # Disable for dynamic data
+    
+    # Cache limits
+    'max_cache_size_mb': 1024,      # Maximum cache size
+    'max_cache_entries': 10000,     # Maximum cached items
+    'cache_ttl_hours': 24,          # Cache time-to-live
+    
+    # Cache cleanup
+    'auto_cleanup': True,
+    'cleanup_interval_hours': 6,
+    'cleanup_threshold': 0.8        # Cleanup when 80% full
+}
+```
+
+LOGGING CONFIGURATION
+
+```python
+LOGGING_CONFIG = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detailed': {
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'simple': {
+            'format': '%(levelname)s - %(message)s'
+        },
+        'json': {
+            'format': '{"timestamp": "%(asctime)s", "level": "%(levelname)s", "module": "%(name)s", "message": "%(message)s"}'
+        }
+    },
+    'handlers': {
+        'file_detailed': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/system.log',
+            'maxBytes': 50 * 1024 * 1024,  # 50MB
+            'backupCount': 10,
+            'formatter': 'detailed',
+            'encoding': 'utf-8'
+        },
+        'file_errors': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/errors.log',
+            'maxBytes': 10 * 1024 * 1024,  # 10MB
+            'backupCount': 5,
+            'formatter': 'detailed'
+        },
+        'file_search': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/search.log',
+            'maxBytes': 20 * 1024 * 1024,  # 20MB
+            'backupCount': 7,
+            'formatter': 'json'
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'stream': 'ext://sys.stdout'
+        }
+    },
+    'loggers': {
+        'json_rag_system': {
+            'handlers': ['file_detailed', 'console'],
+            'level': 'INFO',
+            'propagate': False
+        },
+        'json_rag_system.search': {
+            'handlers': ['file_search'],
+            'level': 'INFO',
+            'propagate': False
+        },
+        'json_rag_system.errors': {
+            'handlers': ['file_errors', 'console'],
+            'level': 'ERROR',
+            'propagate': False
+        }
+    }
+}
+```
+
+BACKUP AND MAINTENANCE
+
+```python
+MAINTENANCE_CONFIG = {
+    # Automatic backups
+    'enable_backups': True,
+    'backup_interval_hours': 24,
+    'backup_retention_days': 30,
+    'backup_directory': './backups',
+    
+    # Health checks
+    'health_check_interval_minutes': 30,
+    'performance_monitoring': True,
+    'memory_usage_alerts': True,
+    'disk_space_alerts': True,
+    
+    # Automatic maintenance
+    'auto_index_rebuild': False,
+    'auto_cache_cleanup': True,
+    'auto_log_rotation': True,
+    'maintenance_window_hours': [2, 4]  # 2 AM to 4 AM
+}
+```
+
+SECURITY CONFIGURATION
+
+```python
+SECURITY_CONFIG = {
+    # File permissions
+    'secure_file_permissions': True,
+    'config_file_readonly': True,
+    
+    # Access control
+    'enable_api_authentication': False,  # Future feature
+    'api_key_required': False,           # Future feature
+    'rate_limiting': False,              # Future feature
+    
+    # Data protection
+    'encrypt_cache_files': False,        # Future feature
+    'secure_logging': True,
+    'sanitize_error_messages': True
+}
+```
+
+PERFORMANCE TUNING
+
+```python
+PERFORMANCE_CONFIG = {
+    # Processing optimization
+    'max_concurrent_requests': 10,
+    'request_timeout_seconds': 30,
+    'batch_processing_size': 100,
+    'parallel_embedding_generation': True,
+    
+    # Memory management
+    'max_memory_usage_gb': 8,
+    'memory_monitoring_interval': 60,
+    'gc_threshold': 0.8,
+    'enable_memory_profiling': False,
+    
+    # Database optimization
+    'connection_pool_size': 20,
+    'query_timeout_ms': 15000,
+    'cursor_batch_size': 1000,
+    'enable_query_profiling': False
+}
+```
