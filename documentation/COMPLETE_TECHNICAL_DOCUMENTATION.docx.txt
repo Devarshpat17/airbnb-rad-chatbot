@@ -3265,18 +3265,7 @@ DATABASE_CONFIG = {
 }
 ```
 
-Authenticated Remote Connection
-```python
-DATABASE_CONFIG = {
-    'uri': 'mongodb://username:password@hostname:27017/database_name',
-    'database': 'airbnb_production',
-    'collection': 'listings',
-    'timeout': 45000,
-    'max_pool_size': 100,
-    'ssl': True,
-    'ssl_cert_reqs': 'CERT_REQUIRED'
-}
-```
+
 
 
 
