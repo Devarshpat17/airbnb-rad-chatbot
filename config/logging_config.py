@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-JSON RAG System - Logging Configuration Module
+JSON RAG System - Fixed Logging Configuration Module
 Centralizes logging configuration for the entire system
+Fixes LogRecord module overwrite issue
 """
 
 import logging
@@ -267,6 +268,7 @@ def log_performance(func):
     wrapper.__doc__ = func.__doc__
     return wrapper
 
+# FIXED: StructuredLogger class with proper LogRecord attribute handling
 class StructuredLogger:
     """Structured logger for consistent log formatting"""
     
@@ -275,15 +277,41 @@ class StructuredLogger:
         self.context = context or {}
     
     def _log(self, level: int, message: str, **kwargs):
-        """Log with structured format"""
+        """Log with structured format - FIXED to handle LogRecord conflicts"""
+        # Handle reserved LogRecord attributes by renaming them
         log_data = {**self.context, **kwargs}
+        
+        # Rename 'module' to 'source_module' to avoid LogRecord conflict
+        if 'module' in log_data:
+            log_data['source_module'] = log_data.pop('module')
+        
+        # Create extra dict for LogRecord, avoiding reserved names
+        extra_dict = {}
+        reserved_attrs = {
+            'name', 'msg', 'args', 'levelname', 'levelno', 'pathname', 
+            'filename', 'module', 'lineno', 'funcName', 'created', 'msecs', 
+            'relativeCreated', 'thread', 'threadName', 'processName', 
+            'process', 'getMessage', 'exc_info', 'exc_text', 'stack_info',
+            'taskName'  # Added in Python 3.12+
+        }
+        
+        for key, value in log_data.items():
+            if key not in reserved_attrs:
+                extra_dict[key] = value
+        
         if log_data:
             extra_info = ' | '.join(f"{k}={v}" for k, v in log_data.items())
             formatted_message = f"{message} | {extra_info}"
         else:
             formatted_message = message
         
-        self.logger.log(level, formatted_message)
+        # Use extra parameter to pass custom fields safely
+        try:
+            self.logger.log(level, formatted_message, extra=extra_dict)
+        except (TypeError, ValueError) as e:
+            # Fallback to simple logging if extra fields cause issues
+            fallback_message = f"{message} | {extra_info}" if log_data else message
+            self.logger.log(level, f"[LOGGING_ERROR] {fallback_message} | original_error={e}")
     
     def debug(self, message: str, **kwargs):
         self._log(logging.DEBUG, message, **kwargs)
