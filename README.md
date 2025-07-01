@@ -14,7 +14,7 @@ A sophisticated AI-powered search and retrieval platform designed for Airbnb pro
 
 1. **Clone and Setup Environment**
 ```bash
-git clone <repository-url>
+git clone https://github.com/Devarshpat17/airbnb-rad-chatbot
 cd json_rag_system
 pip install -r requirements.txt
 ```
